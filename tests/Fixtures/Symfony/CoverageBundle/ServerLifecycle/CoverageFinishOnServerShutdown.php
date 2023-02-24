@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle;
+namespace vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle;
 
-use K911\Swoole\Server\LifecycleHandler\ServerShutdownHandlerInterface;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\Coverage\CodeCoverageManager;
+use vasyaxy\Swoole\Server\LifecycleHandler\ServerShutdownHandlerInterface;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\Coverage\CodeCoverageManager;
 use Swoole\Server;
 
 final class CoverageFinishOnServerShutdown implements ServerShutdownHandlerInterface

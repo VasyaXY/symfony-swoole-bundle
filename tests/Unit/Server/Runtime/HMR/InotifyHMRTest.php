@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Server\Runtime\HMR;
+namespace vasyaxy\Swoole\Tests\Unit\Server\Runtime\HMR;
 
 use Assert\InvalidArgumentException;
-use K911\Swoole\Server\Runtime\HMR\InotifyHMR;
+use vasyaxy\Swoole\Server\Runtime\HMR\InotifyHMR;
 use PHPUnit\Framework\TestCase;
 
 class InotifyHMRTest extends TestCase

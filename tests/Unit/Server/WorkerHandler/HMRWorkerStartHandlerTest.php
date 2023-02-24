@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Server\WorkerHandler;
+namespace vasyaxy\Swoole\Tests\Unit\Server\WorkerHandler;
 
-use K911\Swoole\Server\WorkerHandler\HMRWorkerStartHandler;
-use K911\Swoole\Tests\Unit\Server\IntMother;
-use K911\Swoole\Tests\Unit\Server\Runtime\HMR\HMRSpy;
-use K911\Swoole\Tests\Unit\Server\SwooleServerMock;
+use vasyaxy\Swoole\Server\WorkerHandler\HMRWorkerStartHandler;
+use vasyaxy\Swoole\Tests\Unit\Server\IntMother;
+use vasyaxy\Swoole\Tests\Unit\Server\Runtime\HMR\HMRSpy;
+use vasyaxy\Swoole\Tests\Unit\Server\SwooleServerMock;
 use PHPUnit\Framework\TestCase;
 
 /**

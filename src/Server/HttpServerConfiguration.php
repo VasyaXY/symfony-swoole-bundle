@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server;
+namespace vasyaxy\Swoole\Server;
 
 use Assert\Assertion;
-use K911\Swoole\Server\Config\Socket;
-use K911\Swoole\Server\Config\Sockets;
+use vasyaxy\Swoole\Server\Config\Socket;
+use vasyaxy\Swoole\Server\Config\Sockets;
 
 /**
  * @todo Create interface and split this class

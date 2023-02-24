@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Common\XdebugHandler;
+namespace vasyaxy\Swoole\Common\XdebugHandler;
 
 use Generator;
 use RuntimeException;

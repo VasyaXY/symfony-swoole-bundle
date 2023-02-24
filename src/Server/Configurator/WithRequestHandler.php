@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Configurator;
+namespace vasyaxy\Swoole\Server\Configurator;
 
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
+use vasyaxy\Swoole\Server\RequestHandler\RequestHandlerInterface;
 use Swoole\Http\Server;
 
 final class WithRequestHandler implements ConfiguratorInterface

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Bridge\Symfony\HttpFoundation;
+namespace vasyaxy\Swoole\Tests\Unit\Bridge\Symfony\HttpFoundation;
 
-use K911\Swoole\Bridge\Symfony\HttpFoundation\CloudFrontRequestFactory;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
+use vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\CloudFrontRequestFactory;
+use vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 use Swoole\Http\Request as SwooleRequest;

@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: ''
 labels: kind/bug/possible, priority/important
-assignees: k911
+assignees: vasyaxy
 
 ---
 

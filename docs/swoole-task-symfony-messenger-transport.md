@@ -36,7 +36,7 @@
 
 ## Example
 
-You can also clone and play with [`swoole-bundle-symfony-demo`](https://github.com/k911/swoole-bundle-symfony-demo), where everything including Symfony Messenger configuration is set-up properly. You can run it in seconds using Docker!
+You can also clone and play with [`swoole-bundle-symfony-demo`](https://github.com/vasyaxy/swoole-bundle-symfony-demo), where everything including Symfony Messenger configuration is set-up properly. You can run it in seconds using Docker!
 
 ## Implementation Notes
 

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server;
+namespace vasyaxy\Swoole\Server;
 
-use K911\Swoole\Server\Exception\IllegalInitializationException;
-use K911\Swoole\Server\Exception\NotRunningException;
-use K911\Swoole\Server\Exception\PortUnavailableException;
-use K911\Swoole\Server\Exception\UnexpectedPortException;
-use K911\Swoole\Server\Exception\UninitializedException;
+use vasyaxy\Swoole\Server\Exception\IllegalInitializationException;
+use vasyaxy\Swoole\Server\Exception\NotRunningException;
+use vasyaxy\Swoole\Server\Exception\PortUnavailableException;
+use vasyaxy\Swoole\Server\Exception\UnexpectedPortException;
+use vasyaxy\Swoole\Server\Exception\UninitializedException;
 use Swoole\Http\Server;
 use Swoole\Process;
 use Swoole\Server\Port as Listener;

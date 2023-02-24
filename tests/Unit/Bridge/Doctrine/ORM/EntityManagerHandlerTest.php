@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Bridge\Doctrine\ORM;
+namespace vasyaxy\Swoole\Tests\Unit\Bridge\Doctrine\ORM;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
-use K911\Swoole\Bridge\Doctrine\ORM\EntityManagerHandler;
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
+use vasyaxy\Swoole\Bridge\Doctrine\ORM\EntityManagerHandler;
+use vasyaxy\Swoole\Server\RequestHandler\RequestHandlerInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 use Swoole\Http\Request;

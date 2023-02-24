@@ -3,7 +3,7 @@ name: Feature request
 about: Suggest an idea for this project
 title: ''
 labels: kind/feature, priority/backlog
-assignees: k911
+assignees: vasyaxy
 
 ---
 

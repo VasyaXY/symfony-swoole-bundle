@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\HttpFoundation;
+namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation;
 
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
-use K911\Swoole\Server\Runtime\BootableInterface;
+use vasyaxy\Swoole\Server\RequestHandler\RequestHandlerInterface;
+use vasyaxy\Swoole\Server\Runtime\BootableInterface;
 use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;

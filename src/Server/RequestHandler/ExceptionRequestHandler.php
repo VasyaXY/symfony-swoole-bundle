@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\RequestHandler;
+namespace vasyaxy\Swoole\Server\RequestHandler;
 
-use K911\Swoole\Server\RequestHandler\ExceptionHandler\ExceptionHandlerInterface;
+use vasyaxy\Swoole\Server\RequestHandler\ExceptionHandler\ExceptionHandlerInterface;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Throwable;

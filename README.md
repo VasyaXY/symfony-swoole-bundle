@@ -1,7 +1,7 @@
 # Swoole Bundle
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/1d73a214622bba769171/maintainability)](https://codeclimate.com/github/k911/swoole-bundle/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/1d73a214622bba769171/test_coverage)](https://codeclimate.com/github/k911/swoole-bundle/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1d73a214622bba769171/maintainability)](https://codeclimate.com/github/vasyaxy/swoole-bundle/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/1d73a214622bba769171/test_coverage)](https://codeclimate.com/github/vasyaxy/swoole-bundle/test_coverage)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
@@ -9,19 +9,9 @@ Symfony integration with [Swoole](https://www.swoole.co.uk/) to speed up your ap
 
 ---
 
-## Build Matrix
-
-| CI Job  | Branch [`master`](https://github.com/k911/swoole-bundle/tree/develop)                                                                       | Branch [`develop`](https://github.com/k911/swoole-bundle/tree/master)                                                                         |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Circle  | [![CircleCI](https://circleci.com/gh/k911/swoole-bundle/tree/master.svg?style=svg)](https://circleci.com/gh/k911/swoole-bundle/tree/master) | [![CircleCI](https://circleci.com/gh/k911/swoole-bundle/tree/develop.svg?style=svg)](https://circleci.com/gh/k911/swoole-bundle/tree/develop) |
-| CodeCov | [![codecov](https://codecov.io/gh/k911/swoole-bundle/branch/master/graph/badge.svg)](https://codecov.io/gh/k911/swoole-bundle)              | [![codecov](https://codecov.io/gh/k911/swoole-bundle/branch/develop/graph/badge.svg)](https://codecov.io/gh/k911/swoole-bundle)               |
-| Travis  | [![Build Status](https://travis-ci.org/k911/swoole-bundle.svg?branch=master)](https://travis-ci.org/k911/swoole-bundle)                     | [![Build Status](https://travis-ci.org/k911/swoole-bundle.svg?branch=develop)](https://travis-ci.org/k911/swoole-bundle)                      |
-
 ## Table of Contents
 
 - [Swoole Bundle](#swoole-bundle)
-  - [Build Matrix](#build-matrix)
-  - [Table of Contents](#table-of-contents)
   - [Quick start guide](#quick-start-guide)
   - [Features](#features)
   - [Requirements](#requirements)
@@ -46,7 +36,7 @@ Symfony integration with [Swoole](https://www.swoole.co.uk/) to speed up your ap
 3. Install bundle in your Symfony application
 
     ```bash
-    composer require k911/swoole-bundle
+    composer require vasyaxy/swoole-bundle
     ```
 
 4. Edit `config/bundles.php`
@@ -54,7 +44,7 @@ Symfony integration with [Swoole](https://www.swoole.co.uk/) to speed up your ap
     ```php
     return [
         // ...other bundles
-        K911\Swoole\Bridge\Symfony\Bundle\SwooleBundle::class => ['all' => true],
+        vasyaxy\Swoole\Bridge\Symfony\Bundle\SwooleBundle::class => ['all' => true],
     ];
     ```
 
@@ -98,15 +88,9 @@ Symfony integration with [Swoole](https://www.swoole.co.uk/) to speed up your ap
 
 ### Current version
 
--   PHP version `>= 7.4`
--   Swoole PHP Extension `>= 4.5.10`
--   Symfony `>= 4.4.0`
-
-### Future versions
-
--   PHP version `>= 8.0`
--   Swoole PHP Extension `>= 4.6`
--   Symfony `>= 5.0`
+-   PHP version `>= 8.2`
+-   Swoole PHP Extension `>= 5.0.1`
+-   Symfony `>= 6.2`
 
 Additional requirements to enable specific features:
 

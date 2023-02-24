@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Bridge\Symfony\HttpFoundation;
+namespace vasyaxy\Swoole\Tests\Unit\Bridge\Symfony\HttpFoundation;
 
-use K911\Swoole\Bridge\Symfony\HttpFoundation\SetRequestRuntimeConfiguration;
+use vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\SetRequestRuntimeConfiguration;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 

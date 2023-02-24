@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\EventListeners;
+namespace vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\EventListeners;
 
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\Coverage\CodeCoverageManager;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\Coverage\CodeCoverageManager;
 use Symfony\Component\Console\Event\ConsoleTerminateEvent;
 
 final class CoverageFinishOnConsoleTerminate

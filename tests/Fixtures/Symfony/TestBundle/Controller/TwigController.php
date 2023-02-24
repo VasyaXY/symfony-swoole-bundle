@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Fixtures\Symfony\TestBundle\Controller;
+namespace vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\Controller;
 
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;

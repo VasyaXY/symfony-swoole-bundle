@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\WorkerHandler;
+namespace vasyaxy\Swoole\Server\WorkerHandler;
 
-use K911\Swoole\Server\Runtime\HMR\HotModuleReloaderInterface;
+use vasyaxy\Swoole\Server\Runtime\HMR\HotModuleReloaderInterface;
 use Swoole\Server;
 
 final class HMRWorkerStartHandler implements WorkerStartHandlerInterface

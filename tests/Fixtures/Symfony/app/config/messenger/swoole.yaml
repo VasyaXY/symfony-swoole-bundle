@@ -3,7 +3,7 @@ framework:
         transports:
             swoole: swoole://task
         routing:
-            'K911\Swoole\Tests\Fixtures\Symfony\TestBundle\Message\CreateFileMessage': swoole
+            'vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\Message\CreateFileMessage': swoole
 swoole:
     http_server:
         settings:
@@ -15,11 +15,11 @@ services:
         autoconfigure: true
         public: false
 
-    'K911\Swoole\Tests\Fixtures\Symfony\TestBundle\Controller\TaskController':
+    'vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\Controller\TaskController':
         tags:
             - controller.service_arguments
 
-    'K911\Swoole\Tests\Fixtures\Symfony\TestBundle\MessageHandler\CreateFileMessageHandler':
+    'vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\MessageHandler\CreateFileMessageHandler':
         tags:
             - messenger.message_handler
 

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Api;
+namespace vasyaxy\Swoole\Server\Api;
 
-use K911\Swoole\Server\Config\Sockets;
-use K911\Swoole\Server\Configurator\ConfiguratorInterface;
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
+use vasyaxy\Swoole\Server\Config\Sockets;
+use vasyaxy\Swoole\Server\Configurator\ConfiguratorInterface;
+use vasyaxy\Swoole\Server\RequestHandler\RequestHandlerInterface;
 use Swoole\Http\Server;
 
 /**

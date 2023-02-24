@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Server\Configurator;
+namespace vasyaxy\Swoole\Tests\Unit\Server\Configurator;
 
-use K911\Swoole\Server\Configurator\WithServerStartHandler;
-use K911\Swoole\Server\HttpServerConfiguration;
-use K911\Swoole\Server\LifecycleHandler\NoOpServerStartHandler;
-use K911\Swoole\Tests\Unit\Server\SwooleHttpServerMock;
+use vasyaxy\Swoole\Server\Configurator\WithServerStartHandler;
+use vasyaxy\Swoole\Server\HttpServerConfiguration;
+use vasyaxy\Swoole\Server\LifecycleHandler\NoOpServerStartHandler;
+use vasyaxy\Swoole\Tests\Unit\Server\SwooleHttpServerMock;
 use PHPUnit\Framework\TestCase;
 
 /**

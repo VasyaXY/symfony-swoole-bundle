@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Bridge\Symfony\HttpKernel;
+namespace vasyaxy\Swoole\Tests\Unit\Bridge\Symfony\HttpKernel;
 
-use K911\Swoole\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\ResponseProcessorInjectorInterface;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\ResponseProcessorInterface;
-use K911\Swoole\Bridge\Symfony\HttpKernel\HttpKernelRequestHandler;
+use vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
+use vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\ResponseProcessorInjectorInterface;
+use vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\ResponseProcessorInterface;
+use vasyaxy\Swoole\Bridge\Symfony\HttpKernel\HttpKernelRequestHandler;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 use Swoole\Http\Request as SwooleRequest;

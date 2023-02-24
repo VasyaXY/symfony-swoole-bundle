@@ -11,7 +11,7 @@ services:
 
   # makes classes in src/ available to be used as services
   # this creates a service per class whose id is the fully-qualified class name
-  K911\Swoole\Tests\Fixtures\Symfony\TestBundle\:
+  vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\:
     resource: '../../TestBundle/*'
     # you can exclude directories or files
     # but if a service is unused, it's removed anyway
@@ -19,7 +19,7 @@ services:
 
   # controllers are imported separately to make sure they
   # have the tag that allows actions to type-hint services
-  K911\Swoole\Tests\Fixtures\Symfony\TestBundle\Controller\:
+  vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\Controller\:
     resource: '../../TestBundle/Controller'
     # without this the HMR tests break, might be a bug in HMR
     exclude: '../../TestBundle/Controller/ReplacedContentTestController.php'

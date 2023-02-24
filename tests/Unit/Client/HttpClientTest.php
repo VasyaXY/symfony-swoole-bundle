@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Client;
+namespace vasyaxy\Swoole\Tests\Unit\Client;
 
-use K911\Swoole\Client\HttpClient;
+use vasyaxy\Swoole\Client\HttpClient;
 use PHPUnit\Framework\TestCase;
 
 final class HttpClientTest extends TestCase

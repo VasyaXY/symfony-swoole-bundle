@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Server\Configurator;
+namespace vasyaxy\Swoole\Tests\Unit\Server\Configurator;
 
-use K911\Swoole\Server\Configurator\ConfiguratorInterface;
+use vasyaxy\Swoole\Server\Configurator\ConfiguratorInterface;
 use Swoole\Http\Server;
 
 final class ConfiguratorDummy implements ConfiguratorInterface

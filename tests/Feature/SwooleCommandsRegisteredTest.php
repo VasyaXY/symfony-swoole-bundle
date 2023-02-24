@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Feature;
+namespace vasyaxy\Swoole\Tests\Feature;
 
-use K911\Swoole\Tests\Fixtures\Symfony\TestBundle\Test\ServerTestCase;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\Test\ServerTestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 

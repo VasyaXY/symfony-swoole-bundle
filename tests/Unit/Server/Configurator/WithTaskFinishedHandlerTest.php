@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Server\Configurator;
+namespace vasyaxy\Swoole\Tests\Unit\Server\Configurator;
 
-use K911\Swoole\Server\Configurator\WithTaskFinishedHandler;
-use K911\Swoole\Server\HttpServerConfiguration;
-use K911\Swoole\Server\TaskHandler\NoOpTaskFinishedHandler;
-use K911\Swoole\Tests\Unit\Server\IntMother;
-use K911\Swoole\Tests\Unit\Server\SwooleHttpServerMock;
+use vasyaxy\Swoole\Server\Configurator\WithTaskFinishedHandler;
+use vasyaxy\Swoole\Server\HttpServerConfiguration;
+use vasyaxy\Swoole\Server\TaskHandler\NoOpTaskFinishedHandler;
+use vasyaxy\Swoole\Tests\Unit\Server\IntMother;
+use vasyaxy\Swoole\Tests\Unit\Server\SwooleHttpServerMock;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Feature;
+namespace vasyaxy\Swoole\Tests\Feature;
 
-use K911\Swoole\Bridge\Upscale\Blackfire\WithProfiler;
-use K911\Swoole\Tests\Fixtures\Symfony\TestBundle\Test\ServerTestCase;
+use vasyaxy\Swoole\Bridge\Upscale\Blackfire\WithProfiler;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\Test\ServerTestCase;
 use Upscale\Swoole\Blackfire\Profiler;
 
 final class SwooleProfilerRegisteredTest extends ServerTestCase

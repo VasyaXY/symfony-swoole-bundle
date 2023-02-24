@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle;
+namespace vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle;
 
-use K911\Swoole\Server\LifecycleHandler\ServerManagerStartHandlerInterface;
-use K911\Swoole\Server\LifecycleHandler\ServerManagerStopHandlerInterface;
-use K911\Swoole\Server\LifecycleHandler\ServerShutdownHandlerInterface;
-use K911\Swoole\Server\LifecycleHandler\ServerStartHandlerInterface;
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
-use K911\Swoole\Server\TaskHandler\TaskHandlerInterface;
-use K911\Swoole\Server\WorkerHandler\WorkerStartHandlerInterface;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\Coverage\CodeCoverageManager;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\EventListeners\CoverageFinishOnConsoleTerminate;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\EventListeners\CoverageStartOnConsoleCommandEventListener;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\RequestHandler\CodeCoverageRequestHandler;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle\CoverageFinishOnServerShutdown;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle\CoverageStartOnServerManagerStart;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle\CoverageStartOnServerManagerStop;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle\CoverageStartOnServerStart;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle\CoverageStartOnServerWorkerStart;
-use K911\Swoole\Tests\Fixtures\Symfony\CoverageBundle\TaskHandler\CodeCoverageTaskHandler;
+use vasyaxy\Swoole\Server\LifecycleHandler\ServerManagerStartHandlerInterface;
+use vasyaxy\Swoole\Server\LifecycleHandler\ServerManagerStopHandlerInterface;
+use vasyaxy\Swoole\Server\LifecycleHandler\ServerShutdownHandlerInterface;
+use vasyaxy\Swoole\Server\LifecycleHandler\ServerStartHandlerInterface;
+use vasyaxy\Swoole\Server\RequestHandler\RequestHandlerInterface;
+use vasyaxy\Swoole\Server\TaskHandler\TaskHandlerInterface;
+use vasyaxy\Swoole\Server\WorkerHandler\WorkerStartHandlerInterface;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\Coverage\CodeCoverageManager;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\EventListeners\CoverageFinishOnConsoleTerminate;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\EventListeners\CoverageStartOnConsoleCommandEventListener;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\RequestHandler\CodeCoverageRequestHandler;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle\CoverageFinishOnServerShutdown;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle\CoverageStartOnServerManagerStart;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle\CoverageStartOnServerManagerStop;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle\CoverageStartOnServerStart;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\ServerLifecycle\CoverageStartOnServerWorkerStart;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\TaskHandler\CodeCoverageTaskHandler;
 use SebastianBergmann\CodeCoverage\CodeCoverage;
 use SebastianBergmann\CodeCoverage\Driver\Driver;
 use SebastianBergmann\CodeCoverage\Filter;

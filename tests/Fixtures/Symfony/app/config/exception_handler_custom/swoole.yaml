@@ -11,9 +11,9 @@ services:
         public: false
 
     test_bundle.custom.exception_handler:
-        alias: K911\Swoole\Tests\Fixtures\Symfony\TestBundle\ExceptionHandler\TestCustomExceptionHandler
+        alias: vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\ExceptionHandler\TestCustomExceptionHandler
 
-    K911\Swoole\Tests\Fixtures\Symfony\TestBundle\ExceptionHandler\TestCustomExceptionHandler: {}
+    vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\ExceptionHandler\TestCustomExceptionHandler: {}
 
 
 

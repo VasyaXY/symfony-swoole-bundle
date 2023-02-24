@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\WorkerHandler;
+namespace vasyaxy\Swoole\Server\WorkerHandler;
 
 use Swoole\Server;
 

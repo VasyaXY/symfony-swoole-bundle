@@ -17,6 +17,6 @@ services:
         autoconfigure: true
         public: false
 
-    K911\Swoole\Bridge\Symfony\HttpFoundation\Session\SwooleSessionStorage:
+    vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\Session\SwooleSessionStorage:
         arguments:
             $lifetimeSeconds: '%env(int:COOKIE_LIFETIME)%'

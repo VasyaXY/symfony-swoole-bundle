@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Configurator;
+namespace vasyaxy\Swoole\Server\Configurator;
 
-use K911\Swoole\Server\HttpServerConfiguration;
-use K911\Swoole\Server\LifecycleHandler\ServerStartHandlerInterface;
+use vasyaxy\Swoole\Server\HttpServerConfiguration;
+use vasyaxy\Swoole\Server\LifecycleHandler\ServerStartHandlerInterface;
 use Swoole\Http\Server;
 
 final class WithServerStartHandler implements ConfiguratorInterface

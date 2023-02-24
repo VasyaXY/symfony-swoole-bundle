@@ -14,17 +14,17 @@ Example configuration using `monolog` and `symfony`, can be found in demo projec
 
 Relevant configuration files:
 
-- [docker-compose.yml](https://github.com/k911/swoole-bundle-symfony-demo/blob/master/docker-compose.yml)
-- [config/services.yaml](https://github.com/k911/swoole-bundle-symfony-demo/blob/master/config/services.yaml)
-- [config/packages/dev/monolog.yaml](https://github.com/k911/swoole-bundle-symfony-demo/blob/master/config/packages/dev/monolog.yaml)
-- [config/packages/prod/monolog.yaml](https://github.com/k911/swoole-bundle-symfony-demo/blob/master/config/packages/prod/monolog.yaml)
+- [docker-compose.yml](https://github.com/vasyaxy/swoole-bundle-symfony-demo/blob/master/docker-compose.yml)
+- [config/services.yaml](https://github.com/vasyaxy/swoole-bundle-symfony-demo/blob/master/config/services.yaml)
+- [config/packages/dev/monolog.yaml](https://github.com/vasyaxy/swoole-bundle-symfony-demo/blob/master/config/packages/dev/monolog.yaml)
+- [config/packages/prod/monolog.yaml](https://github.com/vasyaxy/swoole-bundle-symfony-demo/blob/master/config/packages/prod/monolog.yaml)
 
 ### Streaming Swoole HTTP Server logs to `stdout` in Docker
 
 To get Swoole HTTP Server stream internal logs to `stdout`, use this configuration:
 
 ```yaml
-# source: https://github.com/k911/swoole-bundle-symfony-demo/blob/master/config/packages/swoole.yaml
+# source: https://github.com/vasyaxy/swoole-bundle-symfony-demo/blob/master/config/packages/swoole.yaml
 
 parameters:
     ...
@@ -40,7 +40,7 @@ swoole:
 In your `docker-compose.yml` file set environment variable `SWOOLE_LOG_STREAM_PATH` to `/proc/self/fd/1` value, which is real `stdout` in docker container.
 
 ```yaml
-# source: https://github.com/k911/swoole-bundle-symfony-demo/blob/master/docker-compose.yml
+# source: https://github.com/vasyaxy/swoole-bundle-symfony-demo/blob/master/docker-compose.yml
 
 version: "3.6"
 services:
@@ -102,10 +102,10 @@ CMD ["swoole:server:run"]
 
 ## Demo project
 
-If you want to quickly test above configuration on your computer, clone [`k911/swoole-bundle-symfony-demo`](https://github.com/k911/swoole-bundle-symfony-demo) repository and run two simple commands:
+If you want to quickly test above configuration on your computer, clone [`vasyaxy/swoole-bundle-symfony-demo`](https://github.com/vasyaxy/swoole-bundle-symfony-demo) repository and run two simple commands:
 
 ```bash
-git clone https://github.com/k911/swoole-bundle-symfony-demo.git
+git clone https://github.com/vasyaxy/swoole-bundle-symfony-demo.git
 cd swoole-bundle-symfony-demo
 
 docker-compose build

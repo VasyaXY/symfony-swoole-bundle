@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Runtime\HMR;
+namespace vasyaxy\Swoole\Server\Runtime\HMR;
 
 use Assert\Assertion;
 use Assert\AssertionFailedException;
-use K911\Swoole\Server\Runtime\BootableInterface;
+use vasyaxy\Swoole\Server\Runtime\BootableInterface;
 use Swoole\Server;
 
 final class InotifyHMR implements HotModuleReloaderInterface, BootableInterface

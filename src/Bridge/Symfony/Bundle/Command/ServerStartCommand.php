@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Bundle\Command;
+namespace vasyaxy\Swoole\Bridge\Symfony\Bundle\Command;
 
-use K911\Swoole\Bridge\Symfony\Bundle\Exception\CouldNotCreatePidFileException;
-use K911\Swoole\Bridge\Symfony\Bundle\Exception\PidFileNotAccessibleException;
-use function K911\Swoole\get_object_property;
-use K911\Swoole\Server\HttpServer;
-use K911\Swoole\Server\HttpServerConfiguration;
+use vasyaxy\Swoole\Bridge\Symfony\Bundle\Exception\CouldNotCreatePidFileException;
+use vasyaxy\Swoole\Bridge\Symfony\Bundle\Exception\PidFileNotAccessibleException;
+use function vasyaxy\Swoole\get_object_property;
+use vasyaxy\Swoole\Server\HttpServer;
+use vasyaxy\Swoole\Server\HttpServerConfiguration;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\ConsoleOutput;

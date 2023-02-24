@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Configurator;
+namespace vasyaxy\Swoole\Server\Configurator;
 
 use Assert\Assertion;
-use K911\Swoole\Component\GeneratedCollection;
+use vasyaxy\Swoole\Component\GeneratedCollection;
 
 final class CallableChainConfiguratorFactory
 {

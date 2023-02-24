@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Doctrine\ORM;
+namespace vasyaxy\Swoole\Bridge\Doctrine\ORM;
 
 use Doctrine\ORM\EntityManagerInterface;
-use K911\Swoole\Server\RequestHandler\RequestHandlerInterface;
+use vasyaxy\Swoole\Server\RequestHandler\RequestHandlerInterface;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 

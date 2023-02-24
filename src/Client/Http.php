@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Client;
+namespace vasyaxy\Swoole\Client;
 
 final class Http
 {

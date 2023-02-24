@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Bundle\Command;
+namespace vasyaxy\Swoole\Bridge\Symfony\Bundle\Command;
 
 use Assert\Assertion;
-use K911\Swoole\Client\Exception\ClientConnectionErrorException;
-use K911\Swoole\Coroutine\CoroutinePool;
-use K911\Swoole\Server\Api\ApiServerClientFactory;
-use K911\Swoole\Server\Config\Socket;
-use K911\Swoole\Server\Config\Sockets;
+use vasyaxy\Swoole\Client\Exception\ClientConnectionErrorException;
+use vasyaxy\Swoole\Coroutine\CoroutinePool;
+use vasyaxy\Swoole\Server\Api\ApiServerClientFactory;
+use vasyaxy\Swoole\Server\Config\Socket;
+use vasyaxy\Swoole\Server\Config\Sockets;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;

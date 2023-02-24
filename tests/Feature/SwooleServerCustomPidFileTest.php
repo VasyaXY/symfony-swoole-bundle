@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Feature;
+namespace vasyaxy\Swoole\Tests\Feature;
 
-use K911\Swoole\Client\HttpClient;
-use K911\Swoole\Tests\Fixtures\Symfony\TestBundle\Test\ServerTestCase;
+use vasyaxy\Swoole\Client\HttpClient;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\Test\ServerTestCase;
 
 final class SwooleServerCustomPidFileTest extends ServerTestCase
 {

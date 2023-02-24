@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Coroutine;
+namespace vasyaxy\Swoole\Coroutine;
 
 use Assert\Assertion;
 use Swoole\Coroutine;

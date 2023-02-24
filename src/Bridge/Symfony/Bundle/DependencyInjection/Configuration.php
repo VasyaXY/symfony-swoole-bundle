@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Bundle\DependencyInjection;
+namespace vasyaxy\Swoole\Bridge\Symfony\Bundle\DependencyInjection;
 
-use function K911\Swoole\decode_string_as_set;
+use function vasyaxy\Swoole\decode_string_as_set;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
@@ -186,7 +186,7 @@ final class Configuration implements ConfigurationInterface
                                 ->booleanNode('debug_handler')
                                     ->defaultNull()
                                     ->setDeprecated(
-                                        'k911/swoole-bundle',
+                                        'vasyaxy/swoole-bundle',
                                         '0.11',
                                         'The "%node%" option is deprecated. It is no longer needed to provide debug http kernel.'
                                     )

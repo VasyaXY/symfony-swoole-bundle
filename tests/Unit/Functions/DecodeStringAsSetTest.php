@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Functions;
+namespace vasyaxy\Swoole\Tests\Unit\Functions;
 
-use function K911\Swoole\decode_string_as_set;
+use function vasyaxy\Swoole\decode_string_as_set;
 use PHPUnit\Framework\TestCase;
 
 class DecodeStringAsSetTest extends TestCase

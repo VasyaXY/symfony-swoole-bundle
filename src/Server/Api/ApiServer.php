@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Api;
+namespace vasyaxy\Swoole\Server\Api;
 
-use K911\Swoole\Server\HttpServer;
-use K911\Swoole\Server\HttpServerConfiguration;
+use vasyaxy\Swoole\Server\HttpServer;
+use vasyaxy\Swoole\Server\HttpServerConfiguration;
 use Swoole\Server\Port;
 
 /**

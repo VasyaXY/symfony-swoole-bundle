@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Bundle\Command;
+namespace vasyaxy\Swoole\Bridge\Symfony\Bundle\Command;
 
 use Assert\Assertion;
-use K911\Swoole\Server\HttpServer;
-use K911\Swoole\Server\HttpServerConfiguration;
+use vasyaxy\Swoole\Server\HttpServer;
+use vasyaxy\Swoole\Server\HttpServerConfiguration;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\HttpFoundation\Session;
+namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\Session;
 
-use K911\Swoole\Server\Session\StorageInterface;
+use vasyaxy\Swoole\Server\Session\StorageInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;

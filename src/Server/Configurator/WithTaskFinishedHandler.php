@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Configurator;
+namespace vasyaxy\Swoole\Server\Configurator;
 
-use K911\Swoole\Server\HttpServerConfiguration;
-use K911\Swoole\Server\TaskHandler\TaskFinishedHandlerInterface;
+use vasyaxy\Swoole\Server\HttpServerConfiguration;
+use vasyaxy\Swoole\Server\TaskHandler\TaskFinishedHandlerInterface;
 use Swoole\Http\Server;
 
 final class WithTaskFinishedHandler implements ConfiguratorInterface

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Server\Configurator;
+namespace vasyaxy\Swoole\Tests\Unit\Server\Configurator;
 
-use K911\Swoole\Server\Configurator\WithServerManagerStopHandler;
-use K911\Swoole\Server\LifecycleHandler\NoOpServerManagerStopHandler;
-use K911\Swoole\Tests\Unit\Server\SwooleHttpServerMock;
+use vasyaxy\Swoole\Server\Configurator\WithServerManagerStopHandler;
+use vasyaxy\Swoole\Server\LifecycleHandler\NoOpServerManagerStopHandler;
+use vasyaxy\Swoole\Tests\Unit\Server\SwooleHttpServerMock;
 use PHPUnit\Framework\TestCase;
 
 /**

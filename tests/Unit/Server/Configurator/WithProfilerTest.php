@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Server\Configurator;
+namespace vasyaxy\Swoole\Tests\Unit\Server\Configurator;
 
-use K911\Swoole\Bridge\Upscale\Blackfire\WithProfiler;
-use K911\Swoole\Tests\Unit\Server\SwooleHttpServerDummy;
+use vasyaxy\Swoole\Bridge\Upscale\Blackfire\WithProfiler;
+use vasyaxy\Swoole\Tests\Unit\Server\SwooleHttpServerDummy;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 use Upscale\Swoole\Blackfire\Profiler;

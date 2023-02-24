@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Bridge\Symfony\Messenger;
+namespace vasyaxy\Swoole\Tests\Unit\Bridge\Symfony\Messenger;
 
-use K911\Swoole\Bridge\Symfony\Messenger\Exception\ReceiverNotAvailableException;
-use K911\Swoole\Bridge\Symfony\Messenger\SwooleServerTaskReceiver;
-use K911\Swoole\Bridge\Symfony\Messenger\SwooleServerTaskSender;
-use K911\Swoole\Bridge\Symfony\Messenger\SwooleServerTaskTransport;
-use K911\Swoole\Server\Config\Socket;
-use K911\Swoole\Server\Config\Sockets;
-use K911\Swoole\Server\HttpServer;
-use K911\Swoole\Server\HttpServerConfiguration;
+use vasyaxy\Swoole\Bridge\Symfony\Messenger\Exception\ReceiverNotAvailableException;
+use vasyaxy\Swoole\Bridge\Symfony\Messenger\SwooleServerTaskReceiver;
+use vasyaxy\Swoole\Bridge\Symfony\Messenger\SwooleServerTaskSender;
+use vasyaxy\Swoole\Bridge\Symfony\Messenger\SwooleServerTaskTransport;
+use vasyaxy\Swoole\Server\Config\Socket;
+use vasyaxy\Swoole\Server\Config\Sockets;
+use vasyaxy\Swoole\Server\HttpServer;
+use vasyaxy\Swoole\Server\HttpServerConfiguration;
 use PHPStan\Testing\TestCase;
 use Symfony\Component\Messenger\Envelope;
 

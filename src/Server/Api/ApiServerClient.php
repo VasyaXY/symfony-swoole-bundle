@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\Api;
+namespace vasyaxy\Swoole\Server\Api;
 
-use K911\Swoole\Client\Http;
-use K911\Swoole\Client\HttpClient;
+use vasyaxy\Swoole\Client\Http;
+use vasyaxy\Swoole\Client\HttpClient;
 
 final class ApiServerClient implements ApiServerInterface
 {

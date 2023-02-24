@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Feature;
+namespace vasyaxy\Swoole\Tests\Feature;
 
-use K911\Swoole\Client\HttpClient;
-use K911\Swoole\Server\Api\ApiServerClientFactory;
-use K911\Swoole\Server\Config\Socket;
-use K911\Swoole\Server\Config\Sockets;
-use K911\Swoole\Tests\Fixtures\Symfony\TestBundle\Test\ServerTestCase;
+use vasyaxy\Swoole\Client\HttpClient;
+use vasyaxy\Swoole\Server\Api\ApiServerClientFactory;
+use vasyaxy\Swoole\Server\Config\Socket;
+use vasyaxy\Swoole\Server\Config\Sockets;
+use vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\Test\ServerTestCase;
 use Swoole\Coroutine;
 
 final class SwooleServerReloadViaApiClientTest extends ServerTestCase

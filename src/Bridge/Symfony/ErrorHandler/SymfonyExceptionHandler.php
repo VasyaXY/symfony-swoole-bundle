@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\ErrorHandler;
+namespace vasyaxy\Swoole\Bridge\Symfony\ErrorHandler;
 
-use K911\Swoole\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
-use K911\Swoole\Bridge\Symfony\HttpFoundation\ResponseProcessorInterface;
-use K911\Swoole\Server\RequestHandler\ExceptionHandler\ExceptionHandlerInterface;
+use vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
+use vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\ResponseProcessorInterface;
+use vasyaxy\Swoole\Server\RequestHandler\ExceptionHandler\ExceptionHandlerInterface;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Server\RequestHandler;
+namespace vasyaxy\Swoole\Server\RequestHandler;
 
 use Assert\AssertionFailedException;
-use K911\Swoole\Server\HttpServerConfiguration;
-use K911\Swoole\Server\Runtime\BootableInterface;
+use vasyaxy\Swoole\Server\HttpServerConfiguration;
+use vasyaxy\Swoole\Server\Runtime\BootableInterface;
 use RuntimeException;
 use Swoole\Http\Request;
 use Swoole\Http\Response;

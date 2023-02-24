@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Client\Exception;
+namespace vasyaxy\Swoole\Client\Exception;
 
 /**
  * @internal

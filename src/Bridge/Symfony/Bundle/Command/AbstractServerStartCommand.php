@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Bridge\Symfony\Bundle\Command;
+namespace vasyaxy\Swoole\Bridge\Symfony\Bundle\Command;
 
 use Assert\Assertion;
-use K911\Swoole\Common\XdebugHandler\XdebugHandler;
-use function K911\Swoole\decode_string_as_set;
-use function K911\Swoole\format_bytes;
-use function K911\Swoole\get_max_memory;
-use K911\Swoole\Server\Config\Socket;
-use K911\Swoole\Server\Configurator\ConfiguratorInterface;
-use K911\Swoole\Server\HttpServer;
-use K911\Swoole\Server\HttpServerConfiguration;
-use K911\Swoole\Server\HttpServerFactory;
-use K911\Swoole\Server\Runtime\BootableInterface;
+use vasyaxy\Swoole\Common\XdebugHandler\XdebugHandler;
+use function vasyaxy\Swoole\decode_string_as_set;
+use function vasyaxy\Swoole\format_bytes;
+use function vasyaxy\Swoole\get_max_memory;
+use vasyaxy\Swoole\Server\Config\Socket;
+use vasyaxy\Swoole\Server\Configurator\ConfiguratorInterface;
+use vasyaxy\Swoole\Server\HttpServer;
+use vasyaxy\Swoole\Server\HttpServerConfiguration;
+use vasyaxy\Swoole\Server\HttpServerFactory;
+use vasyaxy\Swoole\Server\Runtime\BootableInterface;
 use Swoole\Http\Server;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

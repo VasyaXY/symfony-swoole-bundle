@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Tests\Unit\Functions;
+namespace vasyaxy\Swoole\Tests\Unit\Functions;
 
 /**
  * Class TestObject.

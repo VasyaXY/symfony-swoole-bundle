@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace K911\Swoole\Client;
+namespace vasyaxy\Swoole\Client;
 
-use K911\Swoole\Client\Exception\ClientConnectionErrorException;
-use K911\Swoole\Client\Exception\MissingContentTypeException;
-use K911\Swoole\Client\Exception\UnsupportedContentTypeException;
-use K911\Swoole\Client\Exception\UnsupportedHttpMethodException;
-use K911\Swoole\Server\Config\Socket;
+use vasyaxy\Swoole\Client\Exception\ClientConnectionErrorException;
+use vasyaxy\Swoole\Client\Exception\MissingContentTypeException;
+use vasyaxy\Swoole\Client\Exception\UnsupportedContentTypeException;
+use vasyaxy\Swoole\Client\Exception\UnsupportedHttpMethodException;
+use vasyaxy\Swoole\Server\Config\Socket;
 use Swoole\Coroutine;
 use Swoole\Coroutine\Http\Client;
 
