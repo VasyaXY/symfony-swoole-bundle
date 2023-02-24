@@ -122,11 +122,6 @@
             "phpunit tests/Unit --colors=always --log-junit phpunit/junit.xml"
         ]
     },
-    "extra": {
-        "branch-alias": {
-            "dev-develop": "v0.1"
-        }
-    },
     "config": {
         "process-timeout": 1200,
         "sort-packages": true,
