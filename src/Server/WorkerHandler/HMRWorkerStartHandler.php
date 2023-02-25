@@ -4,6 +4,7 @@ namespace vasyaxy\Swoole\Server\WorkerHandler;
 
 use vasyaxy\Swoole\Server\Runtime\HMR\HotModuleReloaderInterface;
 use Swoole\Server;
+use Swoole\Timer;
 
 final class HMRWorkerStartHandler implements WorkerStartHandlerInterface
 {
@@ -28,8 +29,12 @@ final class HMRWorkerStartHandler implements WorkerStartHandlerInterface
             return;
         }
 
-        $worker->tick($this->interval, function () use ($worker): void {
+        Timer::tick($this->interval, function () use ($worker): void {
             $this->hmr->tick($worker);
         });
+
+//        $worker->tick($this->interval, function () use ($worker): void {
+//            $this->hmr->tick($worker);
+//        });
     }
 }

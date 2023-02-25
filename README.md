@@ -36,7 +36,7 @@ Symfony integration with [Swoole](https://www.swoole.co.uk/) to speed up your ap
 3. Install bundle in your Symfony application
 
     ```bash
-    composer require vasyaxy/swoole-bundle
+    composer require vasyaxy/symfony-swoole-bundle
     ```
 
 4. Edit `config/bundles.php`
@@ -108,7 +108,7 @@ To check your installed version you can run the following command:
 ```sh
 php -r "echo swoole_version() . \PHP_EOL;"
 
-# 4.4.7
+# 5.0.1
 ```
 
 #### Installation

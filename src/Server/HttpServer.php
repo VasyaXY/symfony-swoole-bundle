@@ -19,7 +19,7 @@ final class HttpServer
     /**
      * @var null|Server
      */
-    private null|Server $server;
+    private null|Server $server = null;
 
     /**
      * @var Listener[]
@@ -48,9 +48,7 @@ final class HttpServer
         $this->assertInstanceConfiguredProperly($server);
 
         $this->server = $server;
-        $defaultSocketPort = $this->configuration->getServerSocket()
-            ->port()
-        ;
+        $defaultSocketPort = $this->configuration->getServerSocket()->port();
 
         foreach ($server->ports as $listener) {
             if ($listener->port === $defaultSocketPort) {
