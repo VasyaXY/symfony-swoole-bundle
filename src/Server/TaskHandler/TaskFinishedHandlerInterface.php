@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Server\TaskHandler;
 
 use Swoole\Server;
@@ -14,5 +16,5 @@ interface TaskFinishedHandlerInterface
     /**
      * @param mixed $data
      */
-    public function handle(Server $server, int $taskId, mixed $data): void;
+    public function handle(Server $server, int $taskId, $data): void;
 }

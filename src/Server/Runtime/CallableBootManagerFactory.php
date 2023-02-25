@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Server\Runtime;
 
 use Assert\Assertion;
@@ -24,7 +26,7 @@ final class CallableBootManagerFactory
 
                     return $isAlreadyRegistered(\spl_object_id($bootable));
                 })
-                ->map(fn(BootableInterface $bootable): callable => [$bootable, 'boot'])
+                ->map(fn (BootableInterface $bootable): callable => [$bootable, 'boot'])
         );
     }
 }

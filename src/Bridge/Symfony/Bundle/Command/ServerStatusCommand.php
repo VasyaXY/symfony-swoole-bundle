@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\Bundle\Command;
 
 use Assert\Assertion;
@@ -17,13 +19,19 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 final class ServerStatusCommand extends Command
 {
+    private $apiServerClientFactory;
+    private $sockets;
+    private $parameterBag;
 
     public function __construct(
-        private readonly Sockets                $sockets,
-        private readonly ApiServerClientFactory $apiServerClientFactory,
-        private readonly ParameterBagInterface  $parameterBag
-    )
-    {
+        Sockets $sockets,
+        ApiServerClientFactory $apiServerClientFactory,
+        ParameterBagInterface $parameterBag
+    ) {
+        $this->sockets = $sockets;
+        $this->apiServerClientFactory = $apiServerClientFactory;
+        $this->parameterBag = $parameterBag;
+
         parent::__construct();
     }
 
@@ -34,7 +42,8 @@ final class ServerStatusCommand extends Command
     {
         $this->setDescription('Get current status of the Swoole HTTP Server by querying running API Server.')
             ->addOption('api-host', null, InputOption::VALUE_REQUIRED, 'API Server listens on this host.', $this->parameterBag->get('swoole.http_server.api.host'))
-            ->addOption('api-port', null, InputOption::VALUE_REQUIRED, 'API Server listens on this port.', $this->parameterBag->get('swoole.http_server.api.port'));
+            ->addOption('api-port', null, InputOption::VALUE_REQUIRED, 'API Server listens on this port.', $this->parameterBag->get('swoole.http_server.api.port'))
+        ;
     }
 
     /**
@@ -52,12 +61,14 @@ final class ServerStatusCommand extends Command
 
         $coroutinePool = CoroutinePool::fromCoroutines(function () use ($io): void {
             $status = $this->apiServerClientFactory->newClient()
-                ->status();
+                ->status()
+            ;
             $io->success('Fetched status');
             $this->showStatus($io, $status);
         }, function () use ($io): void {
             $metrics = $this->apiServerClientFactory->newClient()
-                ->metrics();
+                ->metrics()
+            ;
             $io->success('Fetched metrics');
             $this->showMetrics($io, $metrics);
         });
@@ -86,7 +97,7 @@ final class ServerStatusCommand extends Command
         Assertion::numeric($port, 'Port must be a number.');
         Assertion::string($host, 'Host must be a string.');
 
-        $this->sockets->changeApiSocket(new Socket($host, (int)$port));
+        $this->sockets->changeApiSocket(new Socket($host, (int) $port));
     }
 
     private function showStatus(SymfonyStyle $io, array $status): void

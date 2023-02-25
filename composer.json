@@ -14,11 +14,11 @@
     "homepage": "https://github.com/VasyaXY/symfony-swoole-bundle",
     "authors": [{
         "name": "Vasya",
-        "email": "vasyam@gmail.com",
+        "email": "VasyaM@gmail.com",
         "homepage": "https://github.com/VasyaXY"
     }],
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^8.0",
         "ext-json": "*",
         "ext-pcntl": "*",
         "ext-swoole": "^4.5.10|^5.0",

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\ErrorHandler;
 
 use vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
@@ -13,13 +15,36 @@ use Throwable;
 
 final class SymfonyExceptionHandler implements ExceptionHandlerInterface
 {
+    /**
+     * @var HttpKernelInterface
+     */
+    private $kernel;
+
+    /**
+     * @var RequestFactoryInterface
+     */
+    private $requestFactory;
+
+    /**
+     * @var ResponseProcessorInterface
+     */
+    private $responseProcessor;
+
+    /**
+     * @var ErrorResponder
+     */
+    private $errorResponder;
+
     public function __construct(
-        private readonly HttpKernelInterface        $kernel,
-        private readonly RequestFactoryInterface    $requestFactory,
-        private readonly ResponseProcessorInterface $responseProcessor,
-        private readonly ErrorResponder             $errorResponder
-    )
-    {
+        HttpKernelInterface $kernel,
+        RequestFactoryInterface $requestFactory,
+        ResponseProcessorInterface $responseProcessor,
+        ErrorResponder $errorResponder
+    ) {
+        $this->kernel = $kernel;
+        $this->requestFactory = $requestFactory;
+        $this->responseProcessor = $responseProcessor;
+        $this->errorResponder = $errorResponder;
     }
 
     public function handle(Request $request, Throwable $exception, Response $response): void

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Server\Runtime\HMR;
 
 use Swoole\Server;

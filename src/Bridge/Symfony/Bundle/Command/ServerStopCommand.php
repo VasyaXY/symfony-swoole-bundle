@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\Bundle\Command;
 
 use Assert\Assertion;
@@ -15,12 +17,19 @@ use Throwable;
 
 final class ServerStopCommand extends Command
 {
+    private $server;
+    private $serverConfiguration;
+    private $parameterBag;
+
     public function __construct(
-        private readonly HttpServer              $server,
-        private readonly HttpServerConfiguration $serverConfiguration,
-        private readonly ParameterBagInterface   $parameterBag
-    )
-    {
+        HttpServer $server,
+        HttpServerConfiguration $serverConfiguration,
+        ParameterBagInterface $parameterBag
+    ) {
+        $this->server = $server;
+        $this->serverConfiguration = $serverConfiguration;
+        $this->parameterBag = $parameterBag;
+
         parent::__construct();
     }
 
@@ -30,7 +39,8 @@ final class ServerStopCommand extends Command
     protected function configure(): void
     {
         $this->setDescription('Stop Swoole HTTP server running in the background.')
-            ->addOption('pid-file', null, InputOption::VALUE_REQUIRED, 'Pid file', $this->parameterBag->get('kernel.project_dir') . '/var/swoole.pid');
+            ->addOption('pid-file', null, InputOption::VALUE_REQUIRED, 'Pid file', $this->parameterBag->get('kernel.project_dir').'/var/swoole.pid')
+        ;
     }
 
     /**

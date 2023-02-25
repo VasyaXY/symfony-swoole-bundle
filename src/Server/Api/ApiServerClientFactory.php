@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Server\Api;
 
 use Assert\Assertion;
@@ -8,8 +10,11 @@ use vasyaxy\Swoole\Server\Config\Sockets;
 
 final class ApiServerClientFactory
 {
-    public function __construct(private readonly Sockets $sockets)
+    private $sockets;
+
+    public function __construct(Sockets $sockets)
     {
+        $this->sockets = $sockets;
     }
 
     public function newClient(array $options = []): ApiServerClient

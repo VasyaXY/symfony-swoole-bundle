@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\Session;
 
 use Assert\Assertion;
@@ -15,14 +17,19 @@ final class SwooleSessionStorage implements SessionStorageInterface
     public const DEFAULT_SESSION_NAME = 'SWOOLESSID';
 
     /**
-     * @var string
+     * @var StorageInterface
      */
-    private string $name;
+    private $storage;
 
     /**
      * @var string
      */
-    private string $currentId;
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $currentId;
 
     /**
      * @var SessionBagInterface[]
@@ -32,30 +39,26 @@ final class SwooleSessionStorage implements SessionStorageInterface
     /**
      * @var array
      */
-    private array $data;
+    private $data;
 
     /**
      * @var MetadataBag
      */
-    private MetadataBag $metadataBag;
+    private $metadataBag;
 
     /**
      * @var bool
      */
-    private bool $started;
+    private $started;
 
     /**
      * @var int
      */
-    private int $sessionLifetimeSeconds;
+    private $sessionLifetimeSeconds;
 
-    public function __construct(
-        private readonly StorageInterface $storage,
-        string                            $name = self::DEFAULT_SESSION_NAME,
-        int                               $lifetimeSeconds = 86400,
-        MetadataBag                       $metadataBag = null
-    )
+    public function __construct(StorageInterface $storage, string $name = self::DEFAULT_SESSION_NAME, int $lifetimeSeconds = 86400, MetadataBag $metadataBag = null)
     {
+        $this->storage = $storage;
         $this->name = $name;
         $this->setLifetimeSeconds($lifetimeSeconds);
         $this->setMetadataBag($metadataBag);
@@ -164,7 +167,7 @@ final class SwooleSessionStorage implements SessionStorageInterface
      *
      * @throws \Exception
      */
-    public function setId(string $id): void
+    public function setId($id): void
     {
         if ($this->started) {
             throw new LogicException('Cannot set session ID after the session has started.');
@@ -176,7 +179,7 @@ final class SwooleSessionStorage implements SessionStorageInterface
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -184,7 +187,7 @@ final class SwooleSessionStorage implements SessionStorageInterface
     /**
      * @param string $name
      */
-    public function setName(string $name): void
+    public function setName($name): void
     {
         $this->name = $name;
     }
@@ -194,7 +197,7 @@ final class SwooleSessionStorage implements SessionStorageInterface
      *
      * @throws \Assert\AssertionFailedException
      */
-    public function getBag(string $name): SessionBagInterface
+    public function getBag($name): SessionBagInterface
     {
         if (!isset($this->bags[$name])) {
             throw new \InvalidArgumentException(\sprintf('The SessionBagInterface `%s` is not registered.', $name));
@@ -230,7 +233,7 @@ final class SwooleSessionStorage implements SessionStorageInterface
     private function setLifetimeSeconds(int $lifetimeSeconds): void
     {
         $this->sessionLifetimeSeconds = $lifetimeSeconds;
-        \ini_set('session.cookie_lifetime', (string)$lifetimeSeconds);
+        \ini_set('session.cookie_lifetime', (string) $lifetimeSeconds);
     }
 
     /**

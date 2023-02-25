@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Server\Api;
 
 use vasyaxy\Swoole\Server\Config\Sockets;
@@ -12,11 +14,13 @@ use Swoole\Http\Server;
  */
 final class WithApiServerConfiguration implements ConfiguratorInterface
 {
-    public function __construct(
-        private readonly Sockets                 $sockets,
-        private readonly RequestHandlerInterface $requestHandler
-    )
+    private $sockets;
+    private $requestHandler;
+
+    public function __construct(Sockets $sockets, RequestHandlerInterface $requestHandler)
     {
+        $this->sockets = $sockets;
+        $this->requestHandler = $requestHandler;
     }
 
     public function configure(Server $server): void

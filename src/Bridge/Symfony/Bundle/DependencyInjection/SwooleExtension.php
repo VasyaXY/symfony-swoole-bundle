@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\Bundle\DependencyInjection;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -62,14 +64,16 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = Configuration::fromTreeBuilder();
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');
         $loader->load('commands.yaml');
 
         $container->registerForAutoconfiguration(BootableInterface::class)
-            ->addTag('swoole_bundle.bootable_service');
+            ->addTag('swoole_bundle.bootable_service')
+        ;
         $container->registerForAutoconfiguration(ConfiguratorInterface::class)
-            ->addTag('swoole_bundle.server_configurator');
+            ->addTag('swoole_bundle.server_configurator')
+        ;
 
         $config = $this->processConfiguration($configuration, $configs);
 
@@ -157,19 +161,22 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
         }
 
         $container->getDefinition(JsonExceptionHandler::class)
-            ->setArgument('$verbosity', $verbosity);
+            ->setArgument('$verbosity', $verbosity)
+        ;
     }
 
     private function registerSwooleServerTransportConfiguration(ContainerBuilder $container): void
     {
         $container->register(SwooleServerTaskTransportFactory::class)
             ->addTag('messenger.transport_factory')
-            ->addArgument(new Reference(HttpServer::class));
+            ->addArgument(new Reference(HttpServer::class))
+        ;
 
         $container->register(SwooleServerTaskTransportHandler::class)
             ->addArgument(new Reference(MessageBusInterface::class))
-            ->addArgument(new Reference(SwooleServerTaskTransportHandler::class . '.inner'))
-            ->setDecoratedService(TaskHandlerInterface::class, null, -10);
+            ->addArgument(new Reference(SwooleServerTaskTransportHandler::class.'.inner'))
+            ->setDecoratedService(TaskHandlerInterface::class, null, -10)
+        ;
     }
 
     private function registerHttpServerConfiguration(array $config, ContainerBuilder $container): void
@@ -193,11 +200,12 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
         if ('advanced' === $static['strategy']) {
             $mimeTypes = $static['mime_types'];
             $container->register(AdvancedStaticFilesServer::class)
-                ->addArgument(new Reference(AdvancedStaticFilesServer::class . '.inner'))
+                ->addArgument(new Reference(AdvancedStaticFilesServer::class.'.inner'))
                 ->addArgument(new Reference(HttpServerConfiguration::class))
                 ->addArgument($mimeTypes)
                 ->addTag('swoole_bundle.bootable_service')
-                ->setDecoratedService(RequestHandlerInterface::class, null, -60);
+                ->setDecoratedService(RequestHandlerInterface::class, null, -60)
+            ;
         }
 
         $settings['serve_static'] = $static['strategy'];
@@ -212,7 +220,8 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
         }
 
         $sockets = $container->getDefinition(Sockets::class)
-            ->addArgument(new Definition(Socket::class, [$host, $port, $socketType, $sslEnabled]));
+            ->addArgument(new Definition(Socket::class, [$host, $port, $socketType, $sslEnabled]))
+        ;
 
         if ($api['enabled']) {
             $sockets->addArgument(new Definition(Socket::class, [$api['host'], $api['port']]));
@@ -221,7 +230,8 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
         $container->getDefinition(HttpServerConfiguration::class)
             ->addArgument(new Reference(Sockets::class))
             ->addArgument($runningMode)
-            ->addArgument($settings);
+            ->addArgument($settings)
+        ;
 
         $this->registerHttpServerHMR($hmr, $container);
     }
@@ -234,14 +244,16 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
 
         if ('inotify' === $hmr) {
             $container->register(HotModuleReloaderInterface::class, InotifyHMR::class)
-                ->addTag('swoole_bundle.bootable_service');
+                ->addTag('swoole_bundle.bootable_service')
+            ;
         }
 
         $container->autowire(HMRWorkerStartHandler::class)
             ->setPublic(false)
             ->setAutoconfigured(true)
-            ->setArgument('$decorated', new Reference(HMRWorkerStartHandler::class . '.inner'))
-            ->setDecoratedService(WorkerStartHandlerInterface::class);
+            ->setArgument('$decorated', new Reference(HMRWorkerStartHandler::class.'.inner'))
+            ->setDecoratedService(WorkerStartHandlerInterface::class)
+        ;
     }
 
     private function resolveAutoHMR(): string
@@ -262,50 +274,56 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
         // -----------------------
         if ($config['cloudfront_proto_header_handler']) {
             $container->register(CloudFrontRequestFactory::class)
-                ->addArgument(new Reference(CloudFrontRequestFactory::class . '.inner'))
+                ->addArgument(new Reference(CloudFrontRequestFactory::class.'.inner'))
                 ->setAutowired(true)
                 ->setAutoconfigured(true)
                 ->setPublic(false)
-                ->setDecoratedService(RequestFactoryInterface::class, null, -10);
+                ->setDecoratedService(RequestFactoryInterface::class, null, -10)
+            ;
         }
 
         // RequestHandlerInterface
         // -------------------------
         if ($config['trust_all_proxies_handler']) {
             $container->register(TrustAllProxiesRequestHandler::class)
-                ->addArgument(new Reference(TrustAllProxiesRequestHandler::class . '.inner'))
+                ->addArgument(new Reference(TrustAllProxiesRequestHandler::class.'.inner'))
                 ->addTag('swoole_bundle.bootable_service')
-                ->setDecoratedService(RequestHandlerInterface::class, null, -10);
+                ->setDecoratedService(RequestHandlerInterface::class, null, -10)
+            ;
         }
 
         if ($config['entity_manager_handler'] || (
-                null === $config['entity_manager_handler'] && $this->isDoctrineEntityManagerConfigured($container)
-            )) {
+            null === $config['entity_manager_handler'] && $this->isDoctrineEntityManagerConfigured($container)
+        )) {
             $container->register(EntityManagerHandler::class)
-                ->addArgument(new Reference(EntityManagerHandler::class . '.inner'))
+                ->addArgument(new Reference(EntityManagerHandler::class.'.inner'))
                 ->setAutowired(true)
                 ->setAutoconfigured(true)
                 ->setPublic(false)
-                ->setDecoratedService(RequestHandlerInterface::class, null, -20);
+                ->setDecoratedService(RequestHandlerInterface::class, null, -20)
+            ;
         }
 
         if ($config['session_cookie_event_listener']) {
             $container->register(SetSessionCookieEventListener::class)
                 ->setAutowired(true)
                 ->setAutoconfigured(true)
-                ->setPublic(false);
+                ->setPublic(false)
+            ;
         }
 
         if ($config['blackfire_profiler'] || (null === $config['blackfire_profiler'] && \class_exists(Profiler::class))) {
             $container->register(Profiler::class)
-                ->setClass(Profiler::class);
+                ->setClass(Profiler::class)
+            ;
 
             $container->register(WithProfiler::class)
                 ->setClass(WithProfiler::class)
                 ->setAutowired(false)
                 ->setAutoconfigured(false)
                 ->setPublic(false)
-                ->addArgument(new Reference(Profiler::class));
+                ->addArgument(new Reference(Profiler::class))
+            ;
             $def = $container->getDefinition('swoole_bundle.server.http_server.configurator.for_server_run_command');
             $def->addArgument(new Reference(WithProfiler::class));
             $def = $container->getDefinition('swoole_bundle.server.http_server.configurator.for_server_start_command');
@@ -320,26 +338,32 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
         }
 
         $container->register('swoole_bundle.error_handler.symfony_error_handler', ErrorHandler::class)
-            ->setPublic(false);
+            ->setPublic(false)
+        ;
         $container->register(ThrowableHandlerFactory::class)
-            ->setPublic(false);
+            ->setPublic(false)
+        ;
         $container->register('swoole_bundle.error_handler.symfony_kernel_throwable_handler', ReflectionMethod::class)
             ->setFactory([ThrowableHandlerFactory::class, 'newThrowableHandler'])
-            ->setPublic(false);
+            ->setPublic(false)
+        ;
         $container->register(ExceptionHandlerFactory::class)
             ->setArgument('$throwableHandler', new Reference('swoole_bundle.error_handler.symfony_kernel_throwable_handler'))
             ->setAutowired(true)
             ->setAutoconfigured(true)
-            ->setPublic(false);
+            ->setPublic(false)
+        ;
         $container->register(ErrorResponder::class)
             ->setArgument('$errorHandler', new Reference('swoole_bundle.error_handler.symfony_error_handler'))
             ->setAutowired(true)
             ->setAutoconfigured(true)
-            ->setPublic(false);
+            ->setPublic(false)
+        ;
         $container->register(SymfonyExceptionHandler::class)
             ->setAutowired(true)
             ->setAutoconfigured(true)
-            ->setPublic(false);
+            ->setPublic(false)
+        ;
     }
 
     private function isBundleLoaded(ContainerBuilder $container, string $bundleName): bool
@@ -348,7 +372,7 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
         $bundles = $container->getParameter('kernel.bundles');
 
         $bundleNameOnly = \str_replace('bundle', '', \mb_strtolower($bundleName));
-        $fullBundleName = \ucfirst($bundleNameOnly) . 'Bundle';
+        $fullBundleName = \ucfirst($bundleNameOnly).'Bundle';
 
         return isset($bundles[$fullBundleName]);
     }
@@ -367,7 +391,7 @@ final class SwooleExtension extends Extension implements PrependExtensionInterfa
 
     private function isDebug(ContainerBuilder $container): bool
     {
-        return (bool)$container->getParameter('kernel.debug');
+        return (bool) $container->getParameter('kernel.debug');
     }
 
     private function isDebugOrNotProd(ContainerBuilder $container): bool

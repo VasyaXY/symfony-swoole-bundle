@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\Bundle\Command;
 
 use Assert\Assertion;
@@ -15,7 +17,8 @@ final class ServerProfileCommand extends AbstractServerStartCommand
     protected function configure(): void
     {
         $this->setDescription('Handle specified amount of requests to Swoole HTTP server. Useful for profiling.')
-            ->addArgument('requests', InputArgument::REQUIRED, 'Number of requests to handle by the server');
+            ->addArgument('requests', InputArgument::REQUIRED, 'Number of requests to handle by the server')
+        ;
 
         parent::configure();
     }

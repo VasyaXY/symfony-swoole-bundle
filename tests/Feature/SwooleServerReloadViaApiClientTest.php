@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Tests\Feature;
 
 use vasyaxy\Swoole\Client\HttpClient;
@@ -13,8 +15,8 @@ final class SwooleServerReloadViaApiClientTest extends ServerTestCase
 {
     private const CONTROLLER_TEMPLATE_ORIGINAL_TEXT = 'Wrong response!';
     private const CONTROLLER_TEMPLATE_REPLACE_TEXT = '%REPLACE%';
-    private const CONTROLLER_TEMPLATE_SRC = __DIR__ . '/../Fixtures/Symfony/TestBundle/Controller/ReplacedContentTestController.php.tmpl';
-    private const CONTROLLER_TEMPLATE_DEST = __DIR__ . '/../Fixtures/Symfony/TestBundle/Controller/ReplacedContentTestController.php';
+    private const CONTROLLER_TEMPLATE_SRC = __DIR__.'/../Fixtures/Symfony/TestBundle/Controller/ReplacedContentTestController.php.tmpl';
+    private const CONTROLLER_TEMPLATE_DEST = __DIR__.'/../Fixtures/Symfony/TestBundle/Controller/ReplacedContentTestController.php';
 
     protected function setUp(): void
     {
@@ -24,10 +26,11 @@ final class SwooleServerReloadViaApiClientTest extends ServerTestCase
     public function testStartRequestApiToReloadCallStop(): void
     {
         static::bootKernel();
-        $sockets = static::getContainer()->get(Sockets::class);
+        $sockets = static::$container->get(Sockets::class);
         $sockets->changeApiSocket(new Socket('0.0.0.0', 9998));
-        $apiClient = static::getContainer()->get(ApiServerClientFactory::class)
-            ->newClient();
+        $apiClient = static::$container->get(ApiServerClientFactory::class)
+            ->newClient()
+        ;
 
         $serverStart = $this->createConsoleProcess([
             'swoole:server:start',
@@ -77,8 +80,9 @@ final class SwooleServerReloadViaApiClientTest extends ServerTestCase
     public function testStartRequestApiToReloadCallStopUsingApiEnv(): void
     {
         static::bootKernel(['environment' => 'api']);
-        $apiClient = static::getContainer()->get(ApiServerClientFactory::class)
-            ->newClient();
+        $apiClient = static::$container->get(ApiServerClientFactory::class)
+            ->newClient()
+        ;
 
         $serverStart = $this->createConsoleProcess([
             'swoole:server:start',

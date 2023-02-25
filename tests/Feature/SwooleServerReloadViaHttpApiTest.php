@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Tests\Feature;
 
 use vasyaxy\Swoole\Client\Http;
@@ -11,8 +13,8 @@ final class SwooleServerReloadViaHttpApiTest extends ServerTestCase
 {
     private const CONTROLLER_TEMPLATE_ORIGINAL_TEXT = 'Wrong response!';
     private const CONTROLLER_TEMPLATE_REPLACE_TEXT = '%REPLACE%';
-    private const CONTROLLER_TEMPLATE_SRC = __DIR__ . '/../Fixtures/Symfony/TestBundle/Controller/ReplacedContentTestController.php.tmpl';
-    private const CONTROLLER_TEMPLATE_DEST = __DIR__ . '/../Fixtures/Symfony/TestBundle/Controller/ReplacedContentTestController.php';
+    private const CONTROLLER_TEMPLATE_SRC = __DIR__.'/../Fixtures/Symfony/TestBundle/Controller/ReplacedContentTestController.php.tmpl';
+    private const CONTROLLER_TEMPLATE_DEST = __DIR__.'/../Fixtures/Symfony/TestBundle/Controller/ReplacedContentTestController.php';
 
     protected function setUp(): void
     {

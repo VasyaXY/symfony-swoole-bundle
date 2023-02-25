@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Server\Config;
 
 use Assert\Assertion;
@@ -18,14 +20,29 @@ final class Socket
     ];
 
     /**
+     * @var string
+     */
+    private $host;
+
+    /**
+     * @var int
+     */
+    private $port;
+
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @var bool
+     */
+    private $ssl;
+
+    /**
      * @throws \Assert\AssertionFailedException
      */
-    public function __construct(
-        private string          $host = '0.0.0.0',
-        private int             $port = 9501,
-        private readonly string $type = 'tcp',
-        private readonly bool   $ssl = false
-    )
+    public function __construct(string $host = '0.0.0.0', int $port = 9501, string $type = 'tcp', bool $ssl = false)
     {
         $this->setHost($host);
         $this->setPort($port);
@@ -33,11 +50,15 @@ final class Socket
         if ($ssl) {
             Assertion::defined('SWOOLE_SSL', self::CONSTANT_SWOOLE_SSL_IS_NOT_DEFINED_ERROR_MESSAGE);
         }
+
+        $this->type = $type;
+        $this->ssl = $ssl;
     }
 
     /**
-     * @return Socket
      * @throws \Assert\AssertionFailedException
+     *
+     * @return Socket
      */
     public static function fromAddressPort(string $addressPort = '127.0.0.1:9501', string $socketType = 'tcp', bool $enableSsl = false): self
     {
@@ -120,7 +141,7 @@ final class Socket
             $port = 9501;
         }
 
-        return [$host, (int)$port];
+        return [$host, (int) $port];
     }
 
     private function setPort(int $port): void

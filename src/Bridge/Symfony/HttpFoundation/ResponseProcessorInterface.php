@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation;
 
 use Swoole\Http\Response as SwooleResponse;

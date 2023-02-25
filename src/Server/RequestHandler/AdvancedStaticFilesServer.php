@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Server\RequestHandler;
 
 use Assert\AssertionFailedException;
@@ -90,27 +92,31 @@ final class AdvancedStaticFilesServer implements RequestHandlerInterface, Bootab
         'zip' => 'application/zip',
     ];
 
+    private $decorated;
+    private $configuration;
+
     /**
      * @var array<string,string>
      */
-    private array $cachedMimeTypes;
+    private $cachedMimeTypes;
 
     /**
      * @var string
      */
-    private string $publicDir;
+    private $publicDir;
 
     /**
      * @var array
      */
-    private array $fileExtensionMimeTypeMap;
+    private $fileExtensionMimeTypeMap;
 
     public function __construct(
-        private readonly RequestHandlerInterface $decorated,
-        private readonly HttpServerConfiguration $configuration,
-        array                                    $customMimeTypes = []
-    )
-    {
+        RequestHandlerInterface $decorated,
+        HttpServerConfiguration $configuration,
+        array $customMimeTypes = []
+    ) {
+        $this->decorated = $decorated;
+        $this->configuration = $configuration;
         $this->fileExtensionMimeTypeMap = \array_merge(self::FILE_EXTENSION_MIME_TYPE_DEFAULT_MAP, $customMimeTypes);
         $this->cachedMimeTypes = [];
     }
@@ -135,7 +141,7 @@ final class AdvancedStaticFilesServer implements RequestHandlerInterface, Bootab
     public function handle(Request $request, Response $response): void
     {
         if ('GET' === $request->server['request_method']) {
-            $path = $this->publicDir . $request->server['request_uri'];
+            $path = $this->publicDir.$request->server['request_uri'];
             if (isset($this->cachedMimeTypes[$path]) || $this->checkPath($path)) {
                 $response->header('Content-Type', $this->cachedMimeTypes[$path]);
                 $response->sendfile($path);

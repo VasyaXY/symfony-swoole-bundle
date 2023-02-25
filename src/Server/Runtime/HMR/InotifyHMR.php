@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Server\Runtime\HMR;
 
 use Assert\Assertion;
@@ -12,7 +14,12 @@ final class InotifyHMR implements HotModuleReloaderInterface, BootableInterface
     /**
      * @var array file path => true map
      */
-    private array $watchedFiles;
+    private $nonReloadableFiles;
+
+    /**
+     * @var array file path => true map
+     */
+    private $watchedFiles;
 
     /**
      * @var resource returned by \inotify_init
@@ -22,12 +29,12 @@ final class InotifyHMR implements HotModuleReloaderInterface, BootableInterface
     /**
      * @var int \IN_ATRIB
      */
-    private int $watchMask;
+    private $watchMask;
 
     /**
      * @throws AssertionFailedException
      */
-    public function __construct(private array $nonReloadableFiles = [])
+    public function __construct(array $nonReloadableFiles = [])
     {
         Assertion::extensionLoaded('inotify', 'Swoole HMR requires "inotify" PHP Extension present and loaded in the system.');
         $this->watchMask = \defined('IN_ATTRIB') ? (int) \constant('IN_ATTRIB') : 4;

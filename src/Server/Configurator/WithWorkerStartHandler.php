@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Server\Configurator;
 
 use vasyaxy\Swoole\Server\WorkerHandler\WorkerStartHandlerInterface;
@@ -7,8 +9,11 @@ use Swoole\Http\Server;
 
 final class WithWorkerStartHandler implements ConfiguratorInterface
 {
-    public function __construct(private readonly WorkerStartHandlerInterface $handler)
+    private $handler;
+
+    public function __construct(WorkerStartHandlerInterface $handler)
     {
+        $this->handler = $handler;
     }
 
     /**

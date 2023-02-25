@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Component;
 
 use Generator;
@@ -11,20 +13,23 @@ use IteratorAggregate;
  */
 final class GeneratedCollection implements IteratorAggregate
 {
+    private $itemCollection;
     private $items;
 
     /**
      * @param iterable<T> $itemCollection
-     * @param T ...$items
+     * @param T           ...$items
      */
-    public function __construct(private readonly iterable $itemCollection, ...$items)
+    public function __construct(iterable $itemCollection, ...$items)
     {
+        $this->itemCollection = $itemCollection;
         $this->items = $items;
     }
 
     /**
-     * @return Generator<T>
      * @throws \Exception
+     *
+     * @return Generator<T>
      */
     public function each(callable $func): Generator
     {
@@ -34,8 +39,9 @@ final class GeneratedCollection implements IteratorAggregate
     }
 
     /**
-     * @return GeneratedCollection<T>
      * @throws \Exception
+     *
+     * @return GeneratedCollection<T>
      */
     public function map(callable $func): self
     {
@@ -43,8 +49,9 @@ final class GeneratedCollection implements IteratorAggregate
     }
 
     /**
-     * @return GeneratedCollection<T>
      * @throws \Exception
+     *
+     * @return GeneratedCollection<T>
      */
     public function filter(callable $func): self
     {
@@ -64,8 +71,9 @@ final class GeneratedCollection implements IteratorAggregate
     }
 
     /**
-     * @return Generator<T>
      * @throws \Exception
+     *
+     * @return Generator<T>
      */
     private function filterItems(callable $func): Generator
     {

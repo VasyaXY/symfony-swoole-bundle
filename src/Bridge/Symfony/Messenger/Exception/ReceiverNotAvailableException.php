@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\Messenger\Exception;
 
 use Symfony\Component\Messenger\Exception\TransportException;

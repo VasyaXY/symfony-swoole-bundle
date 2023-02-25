@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole;
 
 use Closure;
@@ -9,10 +11,10 @@ use OutOfRangeException;
  * Replaces object property with provided value.
  * Property may not be public.
  *
- * @param mixed $newValue
- * @param null|string $scope class scope useful when property is inherited
+ * @param mixed       $newValue
+ * @param null|string $scope    class scope useful when property is inherited
  */
-function replace_object_property(object $obj, string $propertyName, mixed $newValue, ?string $scope = null): void
+function replace_object_property(object $obj, string $propertyName, $newValue, ?string $scope = null): void
 {
     Closure::bind(function (string $propertyName, $newValue): void {
         $this->$propertyName = $newValue;
@@ -46,17 +48,17 @@ function get_max_memory(): int
     }
     // if set to exact byte
     if (\is_numeric($memoryLimit)) {
-        return (int)$memoryLimit;
+        return (int) $memoryLimit;
     }
 
     // if short hand version http://php.net/manual/en/faq.using.php#faq.using.shorthandbytes
-    $shortHandMemoryLimit = (int)\mb_substr($memoryLimit, 0, -1);
+    $shortHandMemoryLimit = (int) \mb_substr($memoryLimit, 0, -1);
 
     return $shortHandMemoryLimit * [
-            'g' => 1073741824, //1024 * 1024 * 1024
-            'm' => 1048576, //1024 * 1024
-            'k' => 1024,
-        ][\mb_strtolower(\mb_substr($memoryLimit, -1))];
+        'g' => 1073741824, //1024 * 1024 * 1024
+        'm' => 1048576, //1024 * 1024
+        'k' => 1024,
+    ][\mb_strtolower(\mb_substr($memoryLimit, -1))];
 }
 
 function format_bytes(int $bytes): string
@@ -73,13 +75,13 @@ function format_bytes(int $bytes): string
         $bytes /= 1024;
     }
 
-    return \sprintf('%s %s', (string)\round($bytes, 2), $labels[$i]);
+    return \sprintf('%s %s', (string) \round($bytes, 2), $labels[$i]);
 }
 
 /**
  * Simple decodes string of values as array.
  *
- * @param string $separator set separator
+ * @param string        $separator  set separator
  * @param array<string> $stripChars characters to be stripped out from string
  *
  * @return string[]

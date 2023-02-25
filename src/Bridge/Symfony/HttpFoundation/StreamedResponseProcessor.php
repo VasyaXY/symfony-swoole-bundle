@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation;
 
 use Assert\Assertion;
@@ -9,8 +11,11 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 final class StreamedResponseProcessor implements ResponseProcessorInterface
 {
-    public function __construct(private readonly int $bufferOutputSize = 8192)
+    private $bufferOutputSize;
+
+    public function __construct(int $bufferOutputSize = 8192)
     {
+        $this->bufferOutputSize = $bufferOutputSize;
     }
 
     /**

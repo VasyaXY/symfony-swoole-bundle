@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Coroutine;
 
 use Assert\Assertion;
@@ -14,16 +16,17 @@ use Throwable;
 final class CoroutinePool
 {
     private $coroutines;
-    private int $coroutinesCount;
-    private array $results;
-    private array $exceptions;
-    private bool $started;
+    private $coroutinesCount;
+    private $resultsChannel;
+    private $results;
+    private $exceptions;
+    private $started;
 
-    public function __construct(
-        private readonly Channel $resultsChannel, callable ...$coroutines)
+    public function __construct(Channel $resultsChannel, callable ...$coroutines)
     {
         $this->coroutines = $coroutines;
         $this->coroutinesCount = \count($coroutines);
+        $this->resultsChannel = $resultsChannel;
         $this->results = [];
         $this->exceptions = [];
         $this->started = false;

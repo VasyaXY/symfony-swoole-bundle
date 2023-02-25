@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Server\Session;
 
 use Assert\Assertion;
@@ -16,14 +18,17 @@ final class SwooleTableStorage implements StorageInterface
     private const TABLE_COLUMN_DATA = 'data';
     private const TABLE_COLUMN_EXPIRES_AT = 'expires_at';
 
-    public function __construct(
-        private readonly Table $sharedMemory,
-        private readonly int $maxSessionDataBytes = 1024
-    )
+    private $sharedMemory;
+    private $maxSessionDataBytes;
+
+    public function __construct(Table $sharedMemory, int $maxSessionDataBytes = 1024)
     {
         $sharedMemory->column(self::TABLE_COLUMN_DATA, Table::TYPE_STRING, $maxSessionDataBytes);
         $sharedMemory->column(self::TABLE_COLUMN_EXPIRES_AT, Table::TYPE_INT, 8);
         $sharedMemory->create();
+
+        $this->sharedMemory = $sharedMemory;
+        $this->maxSessionDataBytes = $maxSessionDataBytes;
     }
 
     public static function fromDefaults(int $maxActiveSessions = 1024, int $maxSessionDataBytes = 1024, float $tableConflictProportion = 0.2): self

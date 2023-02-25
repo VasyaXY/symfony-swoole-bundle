@@ -1,23 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
-//use Symfony\Component\HttpKernel\EventListener\StreamedResponseListener as HttpFoundationStreamedResponseListener;
+use Symfony\Component\HttpKernel\EventListener\StreamedResponseListener as HttpFoundationStreamedResponseListener;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 class StreamedResponseListener implements EventSubscriberInterface
 {
-    public function __construct(private readonly ?RequestStack $RequestStack = null)
+    private $delegate;
+
+    public function __construct(?HttpFoundationStreamedResponseListener $delegate = null)
     {
+        $this->delegate = $delegate;
     }
 
     public function onKernelResponse(ResponseEvent $event): void
     {
-        if (!$event->isMainRequest()) {
+        if (!$event->isMasterRequest()) {
             return;
         }
 
@@ -33,11 +37,11 @@ class StreamedResponseListener implements EventSubscriberInterface
             return;
         }
 
-//        if (null === $this->RequestStack) {
-//            return;
-//        }
-//
-//        $this->RequestStack->onKernelResponse($event);
+        if (null === $this->delegate) {
+            return;
+        }
+
+        $this->delegate->onKernelResponse($event);
     }
 
     public static function getSubscribedEvents()

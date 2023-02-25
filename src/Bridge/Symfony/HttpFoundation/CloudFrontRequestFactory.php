@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation;
 
 use Swoole\Http\Request as SwooleRequest;
@@ -7,8 +9,11 @@ use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 
 final class CloudFrontRequestFactory implements RequestFactoryInterface
 {
-    public function __construct(private readonly RequestFactoryInterface $decorated)
+    private $decorated;
+
+    public function __construct(RequestFactoryInterface $decorated)
     {
+        $this->decorated = $decorated;
     }
 
     /**

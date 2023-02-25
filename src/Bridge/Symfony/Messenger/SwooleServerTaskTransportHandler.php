@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace vasyaxy\Swoole\Bridge\Symfony\Messenger;
 
 use Assert\Assertion;
@@ -10,10 +12,13 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 final class SwooleServerTaskTransportHandler implements TaskHandlerInterface
 {
-    public function __construct(
-        private readonly MessageBusInterface $bus,
-        private readonly ?TaskHandlerInterface $decorated = null)
+    private $bus;
+    private $decorated;
+
+    public function __construct(MessageBusInterface $bus, ?TaskHandlerInterface $decorated = null)
     {
+        $this->bus = $bus;
+        $this->decorated = $decorated;
     }
 
     public function handle(Server $server, int $taskId, int $fromId, $data): void
