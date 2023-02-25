@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\Session;
 
 use vasyaxy\Swoole\Server\Session\StorageInterface;
@@ -20,20 +18,19 @@ use Symfony\Component\HttpKernel\KernelEvents;
  */
 final class SetSessionCookieEventListener implements EventSubscriberInterface
 {
-    private $sessionStorage;
     private $sessionCookieParameters;
-    private $swooleStorage;
 
-    public function __construct(SessionStorageInterface $sessionStorage, StorageInterface $swooleStorage, array $sessionOptions = [])
+    public function __construct(
+        private readonly SessionStorageInterface $sessionStorage,
+        private readonly StorageInterface        $swooleStorage,
+        array                                    $sessionOptions = [])
     {
-        $this->sessionStorage = $sessionStorage;
-        $this->swooleStorage = $swooleStorage;
         $this->sessionCookieParameters = $this->mergeCookieParams($sessionOptions);
     }
 
     public function onKernelRequest(RequestEvent $event): void
     {
-        if (!$event->isMasterRequest()) {
+        if (!$event->isMainRequest()) {
             return;
         }
 
@@ -47,7 +44,7 @@ final class SetSessionCookieEventListener implements EventSubscriberInterface
 
     public function onKernelResponse(ResponseEvent $event): void
     {
-        if (!$event->isMasterRequest() || !$this->isSessionRelated($event)) {
+        if (!$event->isMainRequest() || !$this->isSessionRelated($event)) {
             return;
         }
 
@@ -68,7 +65,7 @@ final class SetSessionCookieEventListener implements EventSubscriberInterface
 
     public function onFinishRequest(FinishRequestEvent $event): void
     {
-        if (!$event->isMasterRequest() || !$this->isSessionRelated($event)) {
+        if (!$event->isMainRequest() || !$this->isSessionRelated($event)) {
             return;
         }
 

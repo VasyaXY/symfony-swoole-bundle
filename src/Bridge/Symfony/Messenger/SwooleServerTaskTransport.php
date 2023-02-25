@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\Messenger;
 
 use Symfony\Component\Messenger\Envelope;
@@ -9,13 +7,10 @@ use Symfony\Component\Messenger\Transport\TransportInterface;
 
 final class SwooleServerTaskTransport implements TransportInterface
 {
-    private $receiver;
-    private $sender;
-
-    public function __construct(SwooleServerTaskReceiver $receiver, SwooleServerTaskSender $sender)
+    public function __construct(
+        private readonly SwooleServerTaskReceiver $receiver,
+        private readonly SwooleServerTaskSender   $sender)
     {
-        $this->receiver = $receiver;
-        $this->sender = $sender;
     }
 
     /**

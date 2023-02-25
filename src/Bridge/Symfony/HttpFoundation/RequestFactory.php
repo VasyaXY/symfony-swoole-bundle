@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation;
 
 use Swoole\Http\Request as SwooleRequest;
@@ -18,12 +16,12 @@ final class RequestFactory implements RequestFactoryInterface
 
         // Add formatted headers to server
         foreach ($request->header as $key => $value) {
-            $server['HTTP_'.\mb_strtoupper(\str_replace('-', '_', $key))] = $value;
+            $server['HTTP_' . \mb_strtoupper(\str_replace('-', '_', $key))] = $value;
         }
 
         $queryString = $server['QUERY_STRING'] ?? '';
         $server['REQUEST_URI'] = $server['REQUEST_URI'] ?? '';
-        $server['REQUEST_URI'] .= '' !== $queryString ? '?'.$queryString : '';
+        $server['REQUEST_URI'] .= '' !== $queryString ? '?' . $queryString : '';
 
         return new HttpFoundationRequest(
             $request->get ?? [],

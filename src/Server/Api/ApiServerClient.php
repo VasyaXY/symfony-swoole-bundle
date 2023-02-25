@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\Api;
 
 use vasyaxy\Swoole\Client\Http;
@@ -9,11 +7,8 @@ use vasyaxy\Swoole\Client\HttpClient;
 
 final class ApiServerClient implements ApiServerInterface
 {
-    private $client;
-
-    public function __construct(HttpClient $client)
+    public function __construct(private readonly HttpClient $client)
     {
-        $this->client = $client;
     }
 
     /**

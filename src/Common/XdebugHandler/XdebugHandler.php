@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Common\XdebugHandler;
 
 use Generator;
@@ -22,11 +20,8 @@ final class XdebugHandler
         12 => 'SIGUSR2',
     ];
 
-    private $allowXdebugEnvName;
-
-    public function __construct(string $allowXdebugEnvName = 'SWOOLE_ALLOW_XDEBUG')
+    public function __construct(private readonly string $allowXdebugEnvName = 'SWOOLE_ALLOW_XDEBUG')
     {
-        $this->allowXdebugEnvName = $allowXdebugEnvName;
     }
 
     public function shouldRestart(): bool

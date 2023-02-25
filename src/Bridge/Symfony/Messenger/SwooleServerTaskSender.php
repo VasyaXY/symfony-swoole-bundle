@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\Messenger;
 
 use vasyaxy\Swoole\Server\HttpServer;
@@ -12,11 +10,8 @@ use Symfony\Component\Messenger\Transport\Sender\SenderInterface;
 
 final class SwooleServerTaskSender implements SenderInterface
 {
-    private $httpServer;
-
-    public function __construct(HttpServer $httpServer)
+    public function __construct(private readonly HttpServer $httpServer)
     {
-        $this->httpServer = $httpServer;
     }
 
     /**

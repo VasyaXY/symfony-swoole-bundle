@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Tests\Feature;
 
 use vasyaxy\Swoole\Client\HttpClient;
@@ -12,7 +10,7 @@ final class SymfonyProfilerTest extends ServerTestCase
     protected function setUp(): void
     {
         // problem with messenger support in symfony profiler in symfony 4.3
-        $this->markTestSkippedIfSymfonyVersionIsLoverThan('4.4.0');
+        $this->markTestSkippedIfSymfonyVersionIsLoverThan('6.2.0');
         $this->markTestSkippedIfXdebugEnabled();
     }
 

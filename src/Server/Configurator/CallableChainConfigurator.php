@@ -1,21 +1,16 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\Configurator;
 
 use Swoole\Http\Server;
 
 final class CallableChainConfigurator implements ConfiguratorInterface
 {
-    private $configurators;
-
     /**
      * @param iterable<callable> $configurators
      */
-    public function __construct(iterable $configurators)
+    public function __construct(private readonly iterable $configurators)
     {
-        $this->configurators = $configurators;
     }
 
     /**

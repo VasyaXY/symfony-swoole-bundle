@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\Runtime;
 
 use Assert\Assertion;
@@ -11,16 +9,11 @@ use Assert\Assertion;
  */
 final class CallableBootManager implements BootableInterface
 {
-    private $booted;
-    private $bootables;
-
     /**
      * @param iterable<callable> $bootables
      */
-    public function __construct(iterable $bootables, bool $booted = false)
+    public function __construct(private iterable $bootables, private bool $booted = false)
     {
-        $this->bootables = $bootables;
-        $this->booted = $booted;
     }
 
     /**

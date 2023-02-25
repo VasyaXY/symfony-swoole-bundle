@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\Session;
 
 interface StorageInterface
@@ -10,9 +8,9 @@ interface StorageInterface
      * Add or update session storage storage by key.
      *
      * @param mixed $data
-     * @param int   $ttl  lifetime in seconds
+     * @param int $ttl lifetime in seconds
      */
-    public function set(string $key, $data, int $ttl): void;
+    public function set(string $key, mixed $data, int $ttl): void;
 
     /**
      * Delete session storage by key.
@@ -32,5 +30,5 @@ interface StorageInterface
      *
      * @return null|mixed data Should return the same type as provided in set(), null when data is not available or expired
      */
-    public function get(string $key, ?callable $expired = null);
+    public function get(string $key, ?callable $expired = null): mixed;
 }

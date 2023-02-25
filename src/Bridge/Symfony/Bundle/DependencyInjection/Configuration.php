@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\Bundle\DependencyInjection;
 
 use function vasyaxy\Swoole\decode_string_as_set;
@@ -15,11 +13,8 @@ final class Configuration implements ConfigurationInterface
 
     private const CONFIG_NAME = 'swoole';
 
-    private $builder;
-
-    public function __construct(TreeBuilder $builder)
+    public function __construct(private readonly TreeBuilder $builder)
     {
-        $this->builder = $builder;
     }
 
     /**

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\LifecycleHandler;
 
 use Swoole\Process;
@@ -9,12 +7,10 @@ use Swoole\Server;
 
 final class SigIntHandler implements ServerStartHandlerInterface
 {
-    private $decorated;
-    private $signalInterrupt;
+    private bool $signalInterrupt;
 
-    public function __construct(?ServerStartHandlerInterface $decorated = null)
+    public function __construct(private readonly ?ServerStartHandlerInterface $decorated = null)
     {
-        $this->decorated = $decorated;
         $this->signalInterrupt = \defined('SIGINT') ? (int) \constant('SIGINT') : 2;
     }
 

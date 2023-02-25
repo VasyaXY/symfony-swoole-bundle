@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\RequestHandler;
 
 use InvalidArgumentException;
@@ -14,21 +12,19 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class LimitedRequestHandler implements RequestHandlerInterface, BootableInterface
 {
-    private $requestLimit;
-    private $server;
-    private $requestCounter;
-    private $decorated;
+    private int $requestLimit;
 
     /**
      * @var null|SymfonyStyle
      */
-    private $symfonyStyle;
+    private ?SymfonyStyle $symfonyStyle;
 
-    public function __construct(RequestHandlerInterface $decorated, HttpServer $server, AtomicCounter $counter)
+    public function __construct(
+        private readonly RequestHandlerInterface $decorated,
+        private readonly HttpServer              $server,
+        private readonly AtomicCounter           $requestCounter
+    )
     {
-        $this->decorated = $decorated;
-        $this->server = $server;
-        $this->requestCounter = $counter;
         $this->requestLimit = -1;
     }
 
@@ -37,7 +33,7 @@ final class LimitedRequestHandler implements RequestHandlerInterface, BootableIn
      */
     public function boot(array $runtimeConfiguration = []): void
     {
-        $this->requestLimit = (int) ($runtimeConfiguration['requestLimit'] ?? -1);
+        $this->requestLimit = (int)($runtimeConfiguration['requestLimit'] ?? -1);
         $this->symfonyStyle = $runtimeConfiguration['symfonyStyle'] ?? null;
     }
 

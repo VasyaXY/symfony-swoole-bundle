@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\Bundle\Command;
 
 use Assert\Assertion;
@@ -26,33 +24,18 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 abstract class AbstractServerStartCommand extends Command
 {
     /**
-     * @var ParameterBagInterface
-     */
-    protected $parameterBag;
-
-    private $server;
-    private $bootManager;
-    private $serverConfiguration;
-    private $serverConfigurator;
-
-    /**
      * @var bool
      */
-    private $testing = false;
+    private bool $testing = false;
 
     public function __construct(
-        HttpServer $server,
-        HttpServerConfiguration $serverConfiguration,
-        ConfiguratorInterface $serverConfigurator,
-        ParameterBagInterface $parameterBag,
-        BootableInterface $bootManager
-    ) {
-        $this->server = $server;
-        $this->bootManager = $bootManager;
-        $this->parameterBag = $parameterBag;
-        $this->serverConfigurator = $serverConfigurator;
-        $this->serverConfiguration = $serverConfiguration;
-
+        private readonly HttpServer              $server,
+        private readonly HttpServerConfiguration $serverConfiguration,
+        private readonly ConfiguratorInterface   $serverConfigurator,
+        public readonly ParameterBagInterface    $parameterBag,
+        private readonly BootableInterface       $bootManager
+    )
+    {
         parent::__construct();
     }
 
@@ -72,14 +55,13 @@ abstract class AbstractServerStartCommand extends Command
         $sockets = $this->serverConfiguration->getSockets();
         $serverSocket = $sockets->getServerSocket();
         $this->addOption('host', null, InputOption::VALUE_REQUIRED, 'Host name to bind to. To bind to any host, use: 0.0.0.0', $serverSocket->host())
-            ->addOption('port', null, InputOption::VALUE_REQUIRED, 'Listen for Swoole HTTP Server on this port, when 0 random available port is chosen', (string) $serverSocket->port())
+            ->addOption('port', null, InputOption::VALUE_REQUIRED, 'Listen for Swoole HTTP Server on this port, when 0 random available port is chosen', (string)$serverSocket->port())
             ->addOption('serve-static', 's', InputOption::VALUE_NONE, 'Enables serving static content from public directory')
             ->addOption('public-dir', null, InputOption::VALUE_REQUIRED, 'Public directory', $this->getDefaultPublicDir())
             ->addOption('trusted-hosts', null, InputOption::VALUE_REQUIRED, 'Trusted hosts', $this->parameterBag->get('swoole.http_server.trusted_hosts'))
             ->addOption('trusted-proxies', null, InputOption::VALUE_REQUIRED, 'Trusted proxies', $this->parameterBag->get('swoole.http_server.trusted_proxies'))
             ->addOption('api', null, InputOption::VALUE_NONE, 'Enable API Server')
-            ->addOption('api-port', null, InputOption::VALUE_REQUIRED, 'Listen for API Server on this port', $this->parameterBag->get('swoole.http_server.api.port'))
-        ;
+            ->addOption('api-port', null, InputOption::VALUE_REQUIRED, 'Listen for API Server on this port', $this->parameterBag->get('swoole.http_server.api.port'));
     }
 
     /**
@@ -146,18 +128,17 @@ abstract class AbstractServerStartCommand extends Command
         Assertion::string($host, 'Host must be a string.');
 
         $newServerSocket = $sockets->getServerSocket()
-            ->withPort((int) $port)
-            ->withHost($host)
-        ;
+            ->withPort((int)$port)
+            ->withHost($host);
 
         $sockets->changeServerSocket($newServerSocket);
 
-        if ((bool) $input->getOption('api') || $sockets->hasApiSocket()) {
+        if ((bool)$input->getOption('api') || $sockets->hasApiSocket()) {
             /** @var string $apiPort */
             $apiPort = $input->getOption('api-port');
             Assertion::numeric($apiPort, 'Port must be a number.');
 
-            $sockets->changeApiSocket(new Socket('0.0.0.0', (int) $apiPort));
+            $sockets->changeApiSocket(new Socket('0.0.0.0', (int)$apiPort));
         }
 
         if (\filter_var($input->getOption('serve-static'), \FILTER_VALIDATE_BOOLEAN)) {
@@ -180,7 +161,7 @@ abstract class AbstractServerStartCommand extends Command
         Assertion::isArray($runtimeConfiguration['trustedProxies']);
         if (\in_array('*', $runtimeConfiguration['trustedProxies'], true)) {
             $runtimeConfiguration['trustAllProxies'] = true;
-            $runtimeConfiguration['trustedProxies'] = \array_filter($runtimeConfiguration['trustedProxies'], fn (string $trustedProxy): bool => '*' !== $trustedProxy);
+            $runtimeConfiguration['trustedProxies'] = \array_filter($runtimeConfiguration['trustedProxies'], fn(string $trustedProxy): bool => '*' !== $trustedProxy);
         }
 
         return $runtimeConfiguration;
@@ -239,7 +220,7 @@ abstract class AbstractServerStartCommand extends Command
      */
     private function getDefaultPublicDir(): string
     {
-        return $this->serverConfiguration->hasPublicDir() ? $this->serverConfiguration->getPublicDir() : $this->parameterBag->get('kernel.project_dir').'/public';
+        return $this->serverConfiguration->hasPublicDir() ? $this->serverConfiguration->getPublicDir() : $this->parameterBag->get('kernel.project_dir') . '/public';
     }
 
     private function ensureXdebugDisabled(SymfonyStyle $io): void
@@ -296,7 +277,7 @@ abstract class AbstractServerStartCommand extends Command
      *
      * @throws \Assert\AssertionFailedException
      */
-    private function decodeSet($set): array
+    private function decodeSet(mixed $set): array
     {
         if (\is_string($set)) {
             return decode_string_as_set($set);

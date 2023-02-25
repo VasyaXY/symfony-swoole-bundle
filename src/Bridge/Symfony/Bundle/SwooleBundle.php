@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\Bundle;
 
 use vasyaxy\Swoole\Bridge\Symfony\Bundle\DependencyInjection\CompilerPass\DebugLogProcessorPass;
