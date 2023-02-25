@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\RequestHandler;
 
 use Swoole\Http\Request;

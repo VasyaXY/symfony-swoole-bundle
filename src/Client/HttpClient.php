@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Client;
 
 use vasyaxy\Swoole\Client\Exception\ClientConnectionErrorException;
@@ -17,7 +15,7 @@ use Swoole\Coroutine\Http\Client;
  *
  * @internal Class API is not stable, nor it is guaranteed to exists in next releases, use at own risk
  */
-final class HttpClient implements \Serializable
+final class HttpClient // implements \Serializable
 {
     private const SUPPORTED_HTTP_METHODS = [
         Http::METHOD_GET,
@@ -64,8 +62,8 @@ final class HttpClient implements \Serializable
     }
 
     /**
-     * @param int   $timeout seconds
-     * @param float $step    microseconds
+     * @param int $timeout seconds
+     * @param float $step microseconds
      *
      * @return bool Success
      */
@@ -96,7 +94,7 @@ final class HttpClient implements \Serializable
      *
      * @return array<string, array<string, mixed>>
      */
-    public function send(string $path, string $method = Http::METHOD_GET, array $headers = [], $data = null, int $timeout = 3): array
+    public function send(string $path, string $method = Http::METHOD_GET, array $headers = [], mixed $data = null, int $timeout = 3): array
     {
         $this->assertHttpMethodSupported($method);
 
@@ -119,24 +117,26 @@ final class HttpClient implements \Serializable
     /**
      * {@inheritdoc}
      */
-    public function serialize(): string
+    public function __serialize(): array
     {
-        return \json_encode([
-            'host' => $this->client->host,
-            'port' => $this->client->port,
-            'ssl' => $this->client->ssl,
-            'options' => $this->client->setting,
-        ], \JSON_THROW_ON_ERROR);
+        return [
+            'data' => \json_encode([
+                'host' => $this->client->host,
+                'port' => $this->client->port,
+                'ssl' => $this->client->ssl,
+                'options' => $this->client->setting,
+            ], \JSON_THROW_ON_ERROR)
+        ];
     }
 
     /**
      * {@inheritdoc}
      *
-     * @param string $serialized
+     * @param array $serialized
      */
-    public function unserialize($serialized): void
+    public function __unserialize(array $serialized): void
     {
-        $spec = \json_decode($serialized, true, 512, \JSON_THROW_ON_ERROR);
+        $spec = \json_decode($serialized['data'], true, 512, \JSON_THROW_ON_ERROR);
         $this->client = self::makeSwooleClient($spec['host'], $spec['port'], $spec['ssl'], $spec['options']);
     }
 
@@ -165,7 +165,7 @@ final class HttpClient implements \Serializable
     /**
      * @param mixed $data
      */
-    private function serializeRequestData(Client $client, $data): void
+    private function serializeRequestData(Client $client, mixed $data): void
     {
         $json = \json_encode($data, \JSON_THROW_ON_ERROR);
         $client->requestHeaders[Http::HEADER_CONTENT_TYPE] = Http::CONTENT_TYPE_APPLICATION_JSON;

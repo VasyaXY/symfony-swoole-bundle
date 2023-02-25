@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\RequestHandler;
 
 use vasyaxy\Swoole\Server\RequestHandler\ExceptionHandler\ExceptionHandlerInterface;
@@ -11,13 +9,11 @@ use Throwable;
 
 final class ExceptionRequestHandler implements RequestHandlerInterface
 {
-    private $decorated;
-    private $exceptionHandler;
-
-    public function __construct(RequestHandlerInterface $decorated, ExceptionHandlerInterface $exceptionHandler)
+    public function __construct(
+        private readonly RequestHandlerInterface   $decorated,
+        private readonly ExceptionHandlerInterface $exceptionHandler
+    )
     {
-        $this->decorated = $decorated;
-        $this->exceptionHandler = $exceptionHandler;
     }
 
     /**

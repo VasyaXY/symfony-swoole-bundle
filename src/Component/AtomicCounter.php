@@ -1,18 +1,13 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Component;
 
 use Swoole\Atomic;
 
 final class AtomicCounter
 {
-    private $counter;
-
-    public function __construct(Atomic $counter)
+    public function __construct(private readonly Atomic $counter)
     {
-        $this->counter = $counter;
     }
 
     public function increment(): void

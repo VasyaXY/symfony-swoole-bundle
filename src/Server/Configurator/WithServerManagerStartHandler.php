@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\Configurator;
 
 use vasyaxy\Swoole\Server\LifecycleHandler\ServerManagerStartHandlerInterface;
@@ -9,11 +7,8 @@ use Swoole\Http\Server;
 
 final class WithServerManagerStartHandler implements ConfiguratorInterface
 {
-    private $handler;
-
-    public function __construct(ServerManagerStartHandlerInterface $handler)
+    public function __construct(private readonly ServerManagerStartHandlerInterface $handler)
     {
-        $this->handler = $handler;
     }
 
     /**

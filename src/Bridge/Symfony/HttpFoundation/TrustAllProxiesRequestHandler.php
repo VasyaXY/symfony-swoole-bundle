@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation;
 
 use vasyaxy\Swoole\Server\RequestHandler\RequestHandlerInterface;
@@ -14,13 +12,8 @@ final class TrustAllProxiesRequestHandler implements RequestHandlerInterface, Bo
 {
     public const HEADER_X_FORWARDED_ALL = SymfonyRequest::HEADER_X_FORWARDED_FOR | SymfonyRequest::HEADER_X_FORWARDED_HOST | SymfonyRequest::HEADER_X_FORWARDED_PORT | SymfonyRequest::HEADER_X_FORWARDED_PROTO;
 
-    private $decorated;
-    private $trustAllProxies;
-
-    public function __construct(RequestHandlerInterface $decorated, bool $trustAllProxies = false)
+    public function __construct(private readonly RequestHandlerInterface $decorated, private bool $trustAllProxies = false)
     {
-        $this->decorated = $decorated;
-        $this->trustAllProxies = $trustAllProxies;
     }
 
     /**

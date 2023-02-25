@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server;
 
 use vasyaxy\Swoole\Server\Exception\IllegalInitializationException;
@@ -18,29 +16,27 @@ final class HttpServer
 {
     public const GRACEFUL_SHUTDOWN_TIMEOUT_SECONDS = 10;
 
-    private $running;
-    private $configuration;
     /**
      * @var null|Server
      */
-    private $server;
+    private null|Server $server;
 
     /**
      * @var Listener[]
      */
-    private $listeners = [];
-    private $signalTerminate;
-    private $signalReload;
-    private $signalKill;
+    private array $listeners = [];
+    private bool $signalTerminate;
+    private bool $signalReload;
+    private bool $signalKill;
 
-    public function __construct(HttpServerConfiguration $configuration, bool $running = false)
+    public function __construct(
+        private readonly HttpServerConfiguration $configuration,
+        private bool $running = false
+    )
     {
         $this->signalTerminate = \defined('SIGTERM') ? (int) \constant('SIGTERM') : 15;
         $this->signalReload = \defined('SIGUSR1') ? (int) \constant('SIGUSR1') : 10;
         $this->signalKill = \defined('SIGKILL') ? (int) \constant('SIGKILL') : 9;
-
-        $this->running = $running;
-        $this->configuration = $configuration;
     }
 
     /**
@@ -123,7 +119,7 @@ final class HttpServer
     /**
      * @param mixed $data
      */
-    public function dispatchTask($data): void
+    public function dispatchTask(mixed $data): void
     {
         $this->getServer()->task($data);
     }

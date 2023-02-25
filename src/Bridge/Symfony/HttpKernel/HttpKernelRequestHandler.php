@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\HttpKernel;
 
 use vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\RequestFactoryInterface;
@@ -16,21 +14,13 @@ use Symfony\Component\HttpKernel\TerminableInterface;
 
 final class HttpKernelRequestHandler implements RequestHandlerInterface, BootableInterface
 {
-    private $processorInjector;
-    private $kernel;
-    private $requestFactory;
-    private $responseProcessor;
-
     public function __construct(
-        KernelInterface $kernel,
-        RequestFactoryInterface $requestFactory,
-        ResponseProcessorInjectorInterface $processorInjector,
-        ResponseProcessorInterface $responseProcessor
-    ) {
-        $this->kernel = $kernel;
-        $this->requestFactory = $requestFactory;
-        $this->responseProcessor = $responseProcessor;
-        $this->processorInjector = $processorInjector;
+        private readonly KernelInterface                    $kernel,
+        private readonly RequestFactoryInterface            $requestFactory,
+        private readonly ResponseProcessorInjectorInterface $processorInjector,
+        private readonly ResponseProcessorInterface         $responseProcessor
+    )
+    {
     }
 
     /**

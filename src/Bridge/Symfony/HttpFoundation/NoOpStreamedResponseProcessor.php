@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation;
 
 use Swoole\Http\Response as SwooleResponse;
@@ -10,14 +8,8 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 final class NoOpStreamedResponseProcessor implements ResponseProcessorInterface
 {
-    /**
-     * @var ResponseProcessorInterface
-     */
-    private $decorated;
-
-    public function __construct(ResponseProcessorInterface $decorated)
+    public function __construct(private readonly ResponseProcessorInterface $decorated)
     {
-        $this->decorated = $decorated;
     }
 
     /**

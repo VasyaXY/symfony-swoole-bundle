@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\Configurator;
 
 use vasyaxy\Swoole\Server\LifecycleHandler\ServerShutdownHandlerInterface;
@@ -9,11 +7,8 @@ use Swoole\Http\Server;
 
 final class WithServerShutdownHandler implements ConfiguratorInterface
 {
-    private $handler;
-
-    public function __construct(ServerShutdownHandlerInterface $handler)
+    public function __construct(private readonly ServerShutdownHandlerInterface $handler)
     {
-        $this->handler = $handler;
     }
 
     /**

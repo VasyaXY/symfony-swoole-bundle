@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\Config;
 
 use Assert\Assertion;
@@ -9,19 +7,14 @@ use Generator;
 
 final class Sockets
 {
-    private $serverSocket;
-    private $additionalSockets;
+    private Socket $additionalSockets;
 
-    /**
-     * @var null|Socket
-     */
-    private $apiSocket;
-
-    public function __construct(Socket $serverSocket, ?Socket $apiSocket = null, Socket ...$additionalSockets)
+    public function __construct(
+        private Socket $serverSocket,
+        private ?Socket $apiSocket = null,
+        Socket ...$additionalSockets
+    )
     {
-        $this->serverSocket = $serverSocket;
-        $this->apiSocket = $apiSocket;
-        $this->additionalSockets = $additionalSockets;
     }
 
     public function changeServerSocket(Socket $socket): void

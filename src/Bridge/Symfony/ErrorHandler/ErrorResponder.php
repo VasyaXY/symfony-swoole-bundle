@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\ErrorHandler;
 
 use Symfony\Component\ErrorHandler\ErrorHandler;
@@ -11,20 +9,9 @@ use Throwable;
 
 final class ErrorResponder
 {
-    /**
-     * @var ErrorHandler
-     */
-    private $errorHandler;
 
-    /**
-     * @var ExceptionHandlerFactory
-     */
-    private $handlerFactory;
-
-    public function __construct(ErrorHandler $errorHandler, ExceptionHandlerFactory $handlerFactory)
+    public function __construct(private readonly ErrorHandler $errorHandler, private readonly ExceptionHandlerFactory $handlerFactory)
     {
-        $this->errorHandler = $errorHandler;
-        $this->handlerFactory = $handlerFactory;
     }
 
     public function processErroredRequest(Request $request, Throwable $throwable): Response

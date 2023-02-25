@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\WorkerHandler;
 
 use vasyaxy\Swoole\Server\Runtime\HMR\HotModuleReloaderInterface;
@@ -9,15 +7,12 @@ use Swoole\Server;
 
 final class HMRWorkerStartHandler implements WorkerStartHandlerInterface
 {
-    private $hmr;
-    private $interval;
-    private $decorated;
-
-    public function __construct(HotModuleReloaderInterface $hmr, int $interval = 2000, ?WorkerStartHandlerInterface $decorated = null)
+    public function __construct(
+        private readonly HotModuleReloaderInterface   $hmr,
+        private readonly int                          $interval = 2000,
+        private readonly ?WorkerStartHandlerInterface $decorated = null
+    )
     {
-        $this->hmr = $hmr;
-        $this->interval = $interval;
-        $this->decorated = $decorated;
     }
 
     /**

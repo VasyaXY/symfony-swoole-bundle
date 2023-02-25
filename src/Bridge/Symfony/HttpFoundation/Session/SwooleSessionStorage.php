@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Bridge\Symfony\HttpFoundation\Session;
 
 use Assert\Assertion;
@@ -15,11 +13,6 @@ use Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface;
 final class SwooleSessionStorage implements SessionStorageInterface
 {
     public const DEFAULT_SESSION_NAME = 'SWOOLESSID';
-
-    /**
-     * @var StorageInterface
-     */
-    private StorageInterface $storage;
 
     /**
      * @var string
@@ -56,9 +49,13 @@ final class SwooleSessionStorage implements SessionStorageInterface
      */
     private int $sessionLifetimeSeconds;
 
-    public function __construct(StorageInterface $storage, string $name = self::DEFAULT_SESSION_NAME, int $lifetimeSeconds = 86400, MetadataBag $metadataBag = null)
+    public function __construct(
+        private readonly StorageInterface $storage,
+        string                            $name = self::DEFAULT_SESSION_NAME,
+        int                               $lifetimeSeconds = 86400,
+        MetadataBag                       $metadataBag = null
+    )
     {
-        $this->storage = $storage;
         $this->name = $name;
         $this->setLifetimeSeconds($lifetimeSeconds);
         $this->setMetadataBag($metadataBag);
@@ -233,7 +230,7 @@ final class SwooleSessionStorage implements SessionStorageInterface
     private function setLifetimeSeconds(int $lifetimeSeconds): void
     {
         $this->sessionLifetimeSeconds = $lifetimeSeconds;
-        \ini_set('session.cookie_lifetime', (string) $lifetimeSeconds);
+        \ini_set('session.cookie_lifetime', (string)$lifetimeSeconds);
     }
 
     /**

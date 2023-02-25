@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server;
 
 use Assert\Assertion;
@@ -65,18 +63,6 @@ class HttpServerConfiguration
         'error' => \SWOOLE_LOG_ERROR,
     ];
 
-    private $sockets;
-
-    /**
-     * @var string
-     */
-    private $runningMode;
-
-    /**
-     * @var array<string, mixed>
-     */
-    private $settings;
-
     /**
      * @param array $settings settings available:
      *                        - reactor_count (default: number of cpu cores)
@@ -91,10 +77,12 @@ class HttpServerConfiguration
      *
      * @throws \Assert\AssertionFailedException
      */
-    public function __construct(Sockets $sockets, string $runningMode = 'process', array $settings = [])
+    public function __construct(
+        private readonly Sockets $sockets,
+        private string           $runningMode = 'process',
+        private array            $settings = []
+    )
     {
-        $this->sockets = $sockets;
-
         $this->changeRunningMode($runningMode);
         $this->initializeSettings($settings);
     }
@@ -173,7 +161,7 @@ class HttpServerConfiguration
         $contents = \file_get_contents($this->getPidFile());
         Assertion::numeric($contents, 'Contents in pid file is not an integer or it is empty');
 
-        return (int) $contents;
+        return (int)$contents;
     }
 
     public function existsPidFile(): bool

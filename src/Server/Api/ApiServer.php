@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\Api;
 
 use vasyaxy\Swoole\Server\HttpServer;
@@ -14,13 +12,10 @@ use Swoole\Server\Port;
  */
 final class ApiServer implements ApiServerInterface
 {
-    private $server;
-    private $serverConfiguration;
-
-    public function __construct(HttpServer $server, HttpServerConfiguration $serverConfiguration)
+    public function __construct(
+        private readonly HttpServer $server,
+        private readonly HttpServerConfiguration $serverConfiguration)
     {
-        $this->server = $server;
-        $this->serverConfiguration = $serverConfiguration;
     }
 
     /**

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Server\Configurator;
 
 use vasyaxy\Swoole\Server\HttpServerConfiguration;
@@ -9,11 +7,8 @@ use Swoole\Http\Server;
 
 final class WithHttpServerConfiguration implements ConfiguratorInterface
 {
-    private $configuration;
-
-    public function __construct(HttpServerConfiguration $configuration)
+    public function __construct(private readonly HttpServerConfiguration $configuration)
     {
-        $this->configuration = $configuration;
     }
 
     /**
