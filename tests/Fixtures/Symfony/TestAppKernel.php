@@ -6,6 +6,7 @@ namespace vasyaxy\Swoole\Tests\Fixtures\Symfony;
 
 use Exception;
 use Generator;
+use Symfony\Component\HttpFoundation\Response;
 use vasyaxy\Swoole\Bridge\Symfony\Bundle\SwooleBundle;
 use vasyaxy\Swoole\Tests\Fixtures\Symfony\CoverageBundle\CoverageBundle;
 use vasyaxy\Swoole\Tests\Fixtures\Symfony\TestBundle\TestBundle;
@@ -101,7 +102,7 @@ class TestAppKernel extends Kernel
         return __DIR__.'/app';
     }
 
-    public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
+    public function handle(Request $request, $type = HttpKernelInterface::MAIN_REQUEST, bool $catch = true): Response
     {
         // Use CacheKernel if available.
         if (null !== $this->cacheKernel) {

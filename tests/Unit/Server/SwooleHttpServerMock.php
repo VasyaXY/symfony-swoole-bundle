@@ -1,26 +1,24 @@
 <?php
 
-declare(strict_types=1);
-
 namespace vasyaxy\Swoole\Tests\Unit\Server;
 
 use Swoole\Http\Server;
 
 final class SwooleHttpServerMock extends Server
 {
-    public $registeredEvent = false;
-    public $registeredEventPair = [];
-    private static $instance;
+    public bool $registeredEvent = false;
+    public array $registeredEventPair = [];
+    private static self $instance;
 
     private function __construct()
     {
         parent::__construct('localhost', 31999);
     }
 
-    public function on($event, $callback): void
+    public function on($event_name, $callback): bool
     {
         $this->registeredEvent = true;
-        $this->registeredEventPair = [$event, $callback];
+        $this->registeredEventPair = [$event_name, $callback];
     }
 
     public static function make(): self

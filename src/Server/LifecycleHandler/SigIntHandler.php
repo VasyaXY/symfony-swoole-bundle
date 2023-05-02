@@ -7,11 +7,13 @@ use Swoole\Server;
 
 final class SigIntHandler implements ServerStartHandlerInterface
 {
-    private bool $signalInterrupt;
+    private int $signalInterrupt;
+//    private int $signalHup;
 
     public function __construct(private readonly ?ServerStartHandlerInterface $decorated = null)
     {
         $this->signalInterrupt = \defined('SIGINT') ? (int) \constant('SIGINT') : 2;
+//        $this->signalHup = \defined('SIGHUP') ? (int) \constant('SIGHUP') : 1;
     }
 
     /**
@@ -21,6 +23,7 @@ final class SigIntHandler implements ServerStartHandlerInterface
     {
         // 2 => SIGINT
         Process::signal($this->signalInterrupt, [$server, 'shutdown']);
+//        Process::signal($this->signalHup, [$server, 'shutdown']);
 
         if ($this->decorated instanceof ServerStartHandlerInterface) {
             $this->decorated->handle($server);

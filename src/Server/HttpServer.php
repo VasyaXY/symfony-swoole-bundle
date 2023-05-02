@@ -2,6 +2,7 @@
 
 namespace vasyaxy\Swoole\Server;
 
+use Swoole\Coroutine;
 use vasyaxy\Swoole\Server\Exception\IllegalInitializationException;
 use vasyaxy\Swoole\Server\Exception\NotRunningException;
 use vasyaxy\Swoole\Server\Exception\PortUnavailableException;
@@ -10,6 +11,7 @@ use vasyaxy\Swoole\Server\Exception\UninitializedException;
 use Swoole\Http\Server;
 use Swoole\Process;
 use Swoole\Server\Port as Listener;
+use Swoole\Coroutine as Co;
 use Throwable;
 
 final class HttpServer

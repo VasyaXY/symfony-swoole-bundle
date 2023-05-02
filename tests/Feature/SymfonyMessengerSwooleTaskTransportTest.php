@@ -35,7 +35,7 @@ final class SymfonyMessengerSwooleTaskTransportTest extends ServerTestCase
             $this->assertTrue($client->connect());
 
             $response = $client->send('/message/dispatch', 'POST', [
-                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Content-Type' => 'application/x-site-form-urlencoded',
             ], \http_build_query([
                 'fileName' => $testFile,
                 'content' => $testFileContent,

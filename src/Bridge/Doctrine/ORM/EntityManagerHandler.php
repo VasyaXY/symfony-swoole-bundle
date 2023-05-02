@@ -22,7 +22,7 @@ final class EntityManagerHandler implements RequestHandlerInterface
      */
     public function handle(Request $request, Response $response): void
     {
-        if (!$this->connection->ping()) {
+        if (!$this->connection->isConnected()) {
             $this->connection->close();
             $this->connection->connect();
         }

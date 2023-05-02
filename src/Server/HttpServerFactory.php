@@ -5,6 +5,9 @@ namespace vasyaxy\Swoole\Server;
 use Assert\Assertion;
 use vasyaxy\Swoole\Server\Config\Socket;
 use Swoole\Http\Server;
+//use Swoole\Coroutine as Co;
+
+//Co::set(['hook_flags' => SWOOLE_HOOK_ALL]);
 
 final class HttpServerFactory
 {
